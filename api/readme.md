@@ -1,4 +1,4 @@
-# backend
+# api
 
 > 
 
@@ -12,7 +12,7 @@ This project uses [Feathers](http://feathersjs.com). An open source framework fo
 2. Install your dependencies
 
     ```
-    cd path/to/backend
+    cd path/to/api
     npm install
     ```
 

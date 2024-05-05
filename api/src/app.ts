@@ -17,9 +17,13 @@ import { configurationValidator } from './configuration'
 import { logger } from './logger'
 import { logError } from './hooks/log-error'
 import { sqlite } from './sqlite'
+import { authentication } from './authentication'
 import { services } from './services/index'
 import { channels } from './channels'
 
+import { apiReference } from '@scalar/express-api-reference'
+
+import swagger from 'feathers-swagger'
 const app: Application = express(feathers())
 
 // Load app configuration
@@ -39,7 +43,27 @@ app.configure(
     }
   })
 )
+app.configure(
+  swagger({
+    specs: {
+      info: {
+        title: 'A test',
+        description: 'A description',
+        version: '1.0.0'
+      }
+    }
+  })
+)
+app.use(
+  '/reference',
+  apiReference({
+    spec: {
+      url: '/swagger.json'
+    }
+  })
+)
 app.configure(sqlite)
+app.configure(authentication)
 app.configure(services)
 app.configure(channels)
 
