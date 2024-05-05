@@ -1,21 +1,80 @@
 {
   "name": "backend",
-  "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "version": "0.0.0",
+  "homepage": "",
+  "private": true,
+  "keywords": [
+    "feathers"
+  ],
+  "author": {},
+  "contributors": [],
+  "bugs": {},
+  "engines": {
+    "node": ">= 22.1.0"
   },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^3.0.2"
+  "feathers": {
+    "language": "ts",
+    "packager": "pnpm",
+    "database": "sqlite",
+    "framework": "express",
+    "transports": [
+      "rest",
+      "websockets"
+    ],
+    "schema": "typebox"
+  },
+  "directories": {
+    "lib": "src",
+    "test": "test"
+  },
+  "files": [
+    "lib/client.js",
+    "lib/**/*.d.ts",
+    "lib/**/*.shared.js"
+  ],
+  "main": "lib/client",
+  "scripts": {
+    "dev": "nodemon -x ts-node src/index.ts",
+    "compile": "shx rm -rf lib/ && tsc",
+    "start": "node lib/",
+    "prettier": "npx prettier \"**/*.ts\" --write",
+    "mocha": "cross-env NODE_ENV=test mocha test/ --require ts-node/register --recursive --extension .ts --exit",
+    "test": "cross-env NODE_ENV=test npm run migrate && npm run mocha",
+    "bundle:client": "npm run compile && npm pack --pack-destination ./public",
+    "migrate": "knex migrate:latest",
+    "migrate:make": ""
   },
   "dependencies": {
-    "axios": "^1.6.2",
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "mongoose": "^8.0.3"
+    "@feathersjs/authentication": "5.0.25",
+    "@feathersjs/authentication-client": "5.0.25",
+    "@feathersjs/configuration": "5.0.25",
+    "@feathersjs/errors": "5.0.25",
+    "@feathersjs/express": "5.0.25",
+    "@feathersjs/feathers": "5.0.25",
+    "@feathersjs/knex": "5.0.25",
+    "@feathersjs/schema": "5.0.25",
+    "@feathersjs/socketio": "5.0.25",
+    "@feathersjs/transport-commons": "5.0.25",
+    "@feathersjs/typebox": "5.0.25",
+    "compression": "^1.7.4",
+    "knex": "3.1.0",
+    "sqlite3": "5.1.7",
+    "winston": "^3.13.0"
+  },
+  "devDependencies": {
+    "@feathersjs/adapter-commons": "^5.0.25",
+    "@feathersjs/cli": "5.0.25",
+    "@feathersjs/rest-client": "5.0.25",
+    "@types/mocha": "10.0.6",
+    "@types/node": "20.12.8",
+    "axios": "1.6.8",
+    "cross-env": "^7.0.3",
+    "mocha": "10.4.0",
+    "nodemon": "^3.1.0",
+    "prettier": "^3.2.5",
+    "shx": "^0.3.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
   }
 }
