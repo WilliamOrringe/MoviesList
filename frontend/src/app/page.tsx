@@ -1,6 +1,7 @@
 import Sidebar from "@/components/Sidebar";
 import Card from "@/components/card";
 import { BentoGrid, BentoGridItem } from "@/components/ui/BentoGrid";
+import BottomFooter from "@/components/ui/Footer";
 import React, { Fragment } from "react";
 
 const Page = () => {
