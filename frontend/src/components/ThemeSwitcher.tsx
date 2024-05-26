@@ -21,21 +21,19 @@ const ThemeSwitcher = () => {
   };
 
   return (
-    <>
-      <div className="">
-        <div className="flex flex-col justify-center">
-          <input type="checkbox" name="light-switch" className="hidden" />
-          <label
-            className="relative cursor-pointer p-2"
-            htmlFor="light-switch"
-            onClick={toggleDarkMode}
-          >
-            <Sun className="hidden dark:block" />
-            <Moon className="dark:hidden" />
-          </label>
-        </div>
+    <div className="">
+      <div className="flex flex-col justify-center">
+        <input type="checkbox" name="light-switch" className="hidden" />
+        <label
+          className="relative cursor-pointer p-2"
+          htmlFor="light-switch"
+          onClick={toggleDarkMode}
+        >
+          <Sun className="hidden dark:block" />
+          <Moon className="dark:hidden" />
+        </label>
       </div>
-    </>
+    </div>
   );
 };
 export default ThemeSwitcher;
