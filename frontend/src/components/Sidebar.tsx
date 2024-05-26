@@ -6,6 +6,7 @@ import {
 import { faCalendar, faUser } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 const Sidebar = () => {
   return (
@@ -28,6 +29,7 @@ const Sidebar = () => {
           <Link href="/account" className="flex flex-row gap-4">
             <FontAwesomeIcon icon={faUser} className="w-5 h-5" /> Account
           </Link>
+          <ThemeSwitcher/>
         </div>
       </span>
     </div>
