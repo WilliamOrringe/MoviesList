@@ -39,39 +39,35 @@ const Schedule = () => {
             episode: 'Episode 1',
         },
     ]
+    const numberWeeks = 1
+    const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+
+    const currentDay = new Date().toLocaleDateString('en-gb', {
+        weekday: 'short',
+    })
+    const index = days.findIndex((day) => day === currentDay.toLowerCase())
+    const dayOrder = days.slice(index).concat(days.slice(0, index))
+    let dayOrders = structuredClone(dayOrder)
+    for (let i = 0; i < numberWeeks - 1; i++) {
+        dayOrders = [...dayOrders, ...dayOrder]
+    }
+    console.log(dayOrders)
 
     return (
-        <Tabs defaultValue="mon" className="max-w-screen-lg">
+        <Tabs defaultValue="mon" className="">
             <TabsList className="grid w-full grid-cols-7">
-                <TabsTrigger value="mon">Mon</TabsTrigger>
-                <TabsTrigger value="tue">Tue</TabsTrigger>
-                <TabsTrigger value="wed">Wed</TabsTrigger>
-                <TabsTrigger value="thu">Thu</TabsTrigger>
-                <TabsTrigger value="fri">Fri</TabsTrigger>
-                <TabsTrigger value="sat">Sat</TabsTrigger>
-                <TabsTrigger value="sun">Sun</TabsTrigger>
+                {dayOrders.map((day) => (
+                    <TabsTrigger key={day} value={day}>
+                        {day}
+                    </TabsTrigger>
+                ))}
             </TabsList>
-            <TabsContent value="mon">
-                <DayTable data={showSchedules} />
-            </TabsContent>
-            <TabsContent value="tue">
-                <DayTable data={showSchedules} />
-            </TabsContent>
-            <TabsContent value="wed">
-                <DayTable data={showSchedules} />
-            </TabsContent>
-            <TabsContent value="thu">
-                <DayTable data={showSchedules} />
-            </TabsContent>
-            <TabsContent value="fri">
-                <DayTable data={showSchedules} />
-            </TabsContent>
-            <TabsContent value="sat">
-                <DayTable data={showSchedules} />
-            </TabsContent>
-            <TabsContent value="sun">
-                <DayTable data={showSchedules} />
-            </TabsContent>
+
+            {dayOrders.map((day) => (
+                <TabsContent key={day} value={day}>
+                    <DayTable data={showSchedules} />
+                </TabsContent>
+            ))}
         </Tabs>
     )
 }

@@ -64,8 +64,8 @@ const Landing = () => {
         console.log('submitted')
     }
     return (
-        <div className="h-[40rem] flex flex-col justify-center  items-center px-4">
-            <div className="mb-10 sm:mb-10 text-xl text-center sm:text-5xl dark:text-white text-black">
+        <div className="px-4">
+            <div className="mb-10 sm:mb-10 text-xl sm:text-5xl dark:text-white text-black mt-20 flex justify-center">
                 <TypewriterEffectSmooth words={words} />
             </div>
             <PlaceholdersAndVanishInput
@@ -73,7 +73,7 @@ const Landing = () => {
                 onChange={handleChange}
                 onSubmit={onSubmit}
             />
-            <div className="h-[20rem] rounded-md flex flex-col antialiased bg-transparent items-center justify-center relative max-w-screen-lg">
+            <div className="h-[20rem] rounded-md antialiased bg-transparent items-center justify-center relative mt-20">
                 <InfiniteMovingCards
                     items={testimonials}
                     direction="right"
