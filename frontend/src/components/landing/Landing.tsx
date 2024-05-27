@@ -73,7 +73,7 @@ const Landing = () => {
                 onChange={handleChange}
                 onSubmit={onSubmit}
             />
-            <div className="h-[40rem] rounded-md flex flex-col antialiased bg-transparent items-center justify-center relative overflow-hidden">
+            <div className="h-[20rem] rounded-md flex flex-col antialiased bg-transparent items-center justify-center relative overflow-hidden">
                 <InfiniteMovingCards
                     items={testimonials}
                     direction="right"
