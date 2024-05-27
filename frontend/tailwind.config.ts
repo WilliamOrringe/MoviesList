@@ -1,59 +1,80 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/app/**/**/*.tsx", "./src/components/**/*.tsx"],
-  darkMode: "selector",
-  theme: {
-    animation: {
-      none: "none",
-      spin: "spin 1s linear infinite",
-      ping: "ping 1s cubic-bezier(0, 0, 0.2, 1) infinite",
-      pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-      bounce: "bounce 1s infinite",
-    },
-    blur: {
-      0: "0",
-      none: "0",
-      sm: "4px",
-      DEFAULT: "8px",
-      md: "12px",
-      lg: "16px",
-      xl: "24px",
-      "2xl": "40px",
-      "3xl": "64px",
-    },
-    boxShadow: {
-      sm: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-      DEFAULT: "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
-      md: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
-      lg: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
-      xl: "0 20px 25px -5px rgb(255 255 255 / 0.1), 0 8px 10px -6px rgb(255 255 255 / 0.1)",
-      "2xl": "0 25px 50px -12px rgb(0 0 0 / 0.25)",
-      inner: "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)",
-      good: "18px 29px 4px 0 rgb(0 0 0 / 0.25)",
-      none: "none",
-    },
+import type { Config } from "tailwindcss"
 
+const config = {
+  darkMode: ["class"],
+  content: [
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+	],
+  prefix: "",
+  theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       colors: {
-        backgroundDark: "#050A11",
-        shadedBackgroundDark: "#0D1218",
-        primaryDark: "#b198ce",
-        secondaryDark: "#4e277c",
-        accentDark: "#853fdb",
-        textDark: "#ecebed",
-
-        backgroundLight: "#faf9fb",
-        primaryLight: "#4b3168",
-        secondaryLight: "#ab83d8",
-        accentLight: "#6b25c1",
-        textLight: "#121113",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
       },
-      fontFamily: {
-        display: ["Poppins", "sans-serif"],
-        good: ["Montserrat", "sans-serif"],
-        body: ["Poppins", "sans-serif"],
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [],
-};
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config
+
+export default config
