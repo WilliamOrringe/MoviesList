@@ -11,7 +11,7 @@ export const MoviesGrid = ({
                 <Fragment key={i}>
                     <div
                         className="group relative hover:cursor-pointer col-span-1 h-[400px]
-         rounded-lg shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-125 overflow-hidden hover:z-10 z-1"
+         rounded-lg shadow-good transition-transform duration-300 ease-in-out transform hover:scale-110 hover:z-10 z-1"
                     >
                         <Image
                             key={i}
@@ -19,14 +19,13 @@ export const MoviesGrid = ({
                             alt="movie poster"
                             width={500}
                             height={500}
-                            className="h-full w-full object-cover col-span-1 z-1"
+                            className="h-full w-full object-cover col-span-1 z-1 rounded-lg"
                         />
                         {/* <div className="bg-gray-100 w-full h-full"></div> */}
-                        <div className="z-40 bg-black h-20 mt-[200px] p-4 hidden group-hover:flex">
-                            <h2 className="text-lg font-semibold text-white">
+                        <div className="z-40 h-20 bg-white dark:bg-slate-950 p-4 opacity-0  group-hover:opacity-100 relative rounded-b-lg -mt-1">
+                            <h2 className="text-lg font-semibold dark:text-white text-black">
                                 {movieInfo.title}
                             </h2>
-                            asdasdasd sad asd asd
                         </div>
                     </div>
                 </Fragment>

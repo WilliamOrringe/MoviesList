@@ -1,9 +1,7 @@
 'use server'
 
-import { BentoGrid, BentoGridItem } from '@/components/ui/BentoGrid'
-import { items } from './items/home-bento'
 import Landing from '@/components/landing/Landing'
-import getMovies from '../movies/_actions/actions'
+import getMovies from '@/components/movie-grid/_actions/actions'
 import { MoviesGrid } from '@/components/movie-grid/movies'
 import Schedule from '@/components/schedule/Schedule'
 
