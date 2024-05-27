@@ -24,9 +24,7 @@ const Navbar = () => {
         <NavigationMenu>
             <NavigationMenuList>
                 <NavigationMenuItem>
-                    <NavigationMenuTrigger>
-                        Home
-                    </NavigationMenuTrigger>
+                    <NavigationMenuTrigger>Home</NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                             <li className="row-span-3">
@@ -111,6 +109,9 @@ const Navbar = () => {
                             Documentation
                         </NavigationMenuLink>
                     </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                    <ThemeSwitcher />
                 </NavigationMenuItem>
             </NavigationMenuList>
         </NavigationMenu>
