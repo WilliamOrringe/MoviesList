@@ -15,8 +15,9 @@ import {
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLaptop } from '@fortawesome/free-solid-svg-icons'
-import { components } from './components'
 import { cn } from '@/lib/utils'
+import { shows } from './shows'
+import { genres } from './genres'
 
 const Navbar = () => {
     return (
@@ -24,7 +25,7 @@ const Navbar = () => {
             <NavigationMenuList>
                 <NavigationMenuItem>
                     <NavigationMenuTrigger>
-                        Getting started
+                        Home
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -71,16 +72,32 @@ const Navbar = () => {
                     </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+                    <NavigationMenuTrigger>Shows</NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                            {components.map((component) => (
+                            {shows.map((show) => (
                                 <ListItem
-                                    key={component.title}
-                                    title={component.title}
-                                    href={component.href}
+                                    key={show.title}
+                                    title={show.title}
+                                    href={show.href}
                                 >
-                                    {component.description}
+                                    {show.description}
+                                </ListItem>
+                            ))}
+                        </ul>
+                    </NavigationMenuContent>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                    <NavigationMenuTrigger>Genres</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                            {genres.map((genre) => (
+                                <ListItem
+                                    key={genre.title}
+                                    title={genre.title}
+                                    href={genre.href}
+                                >
+                                    {genre.description}
                                 </ListItem>
                             ))}
                         </ul>

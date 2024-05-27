@@ -51,7 +51,7 @@ const Landing = () => {
             text: 'with',
         },
         {
-            text: 'ThisSite.',
+            text: 'MovieList.',
             className: 'text-blue-500 dark:text-blue-500',
         },
     ]

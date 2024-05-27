@@ -3,7 +3,7 @@ import Home from './_home/home'
 
 const Page = () => {
     return (
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-10">
             <Home />
             <Schedule />
         </div>
