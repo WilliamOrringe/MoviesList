@@ -121,6 +121,15 @@ const Navbar = () => {
                 <NavigationMenuItem>
                     <ThemeSwitcher />
                 </NavigationMenuItem>
+                <NavigationMenuItem>
+                    <Avatar>
+                        <AvatarImage
+                            src="https://github.com/shadcn.png"
+                            alt="@shadcn"
+                        />
+                        <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                </NavigationMenuItem>
             </NavigationMenuList>
         </NavigationMenu>
     )
