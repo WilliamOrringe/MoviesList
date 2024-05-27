@@ -2,48 +2,41 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import DayTable from './DayTable'
 
 const Schedule = () => {
-    const invoices = [
+    const showSchedules = [
         {
-            invoice: 'INV001',
-            paymentStatus: 'Paid',
-            totalAmount: '$250.00',
-            paymentMethod: 'Credit Card',
+            time: '8:00',
+            title: 'Paid',
+            episode: 'Episode 1',
         },
         {
-            invoice: 'INV002',
-            paymentStatus: 'Pending',
-            totalAmount: '$150.00',
-            paymentMethod: 'PayPal',
+            time: '8:00',
+            title: 'Paid',
+            episode: 'Episode 1',
         },
         {
-            invoice: 'INV003',
-            paymentStatus: 'Unpaid',
-            totalAmount: '$350.00',
-            paymentMethod: 'Bank Transfer',
+            time: '8:00',
+            title: 'Paid',
+            episode: 'Episode 1',
         },
         {
-            invoice: 'INV004',
-            paymentStatus: 'Paid',
-            totalAmount: '$450.00',
-            paymentMethod: 'Credit Card',
+            time: '8:00',
+            title: 'Paid',
+            episode: 'Episode 1',
         },
         {
-            invoice: 'INV005',
-            paymentStatus: 'Paid',
-            totalAmount: '$550.00',
-            paymentMethod: 'PayPal',
+            time: '8:00',
+            title: 'Paid',
+            episode: 'Episode 1',
         },
         {
-            invoice: 'INV006',
-            paymentStatus: 'Pending',
-            totalAmount: '$200.00',
-            paymentMethod: 'Bank Transfer',
+            time: '8:00',
+            title: 'Paid',
+            episode: 'Episode 1',
         },
         {
-            invoice: 'INV007',
-            paymentStatus: 'Unpaid',
-            totalAmount: '$300.00',
-            paymentMethod: 'Credit Card',
+            time: '8:00',
+            title: 'Paid',
+            episode: 'Episode 1',
         },
     ]
 
@@ -59,25 +52,25 @@ const Schedule = () => {
                 <TabsTrigger value="sun">Sun</TabsTrigger>
             </TabsList>
             <TabsContent value="mon">
-                <DayTable data={invoices} />
+                <DayTable data={showSchedules} />
             </TabsContent>
             <TabsContent value="tue">
-                <DayTable data={invoices} />
+                <DayTable data={showSchedules} />
             </TabsContent>
             <TabsContent value="wed">
-                <DayTable data={invoices} />
+                <DayTable data={showSchedules} />
             </TabsContent>
             <TabsContent value="thu">
-                <DayTable data={invoices} />
+                <DayTable data={showSchedules} />
             </TabsContent>
             <TabsContent value="fri">
-                <DayTable data={invoices} />
+                <DayTable data={showSchedules} />
             </TabsContent>
             <TabsContent value="sat">
-                <DayTable data={invoices} />
+                <DayTable data={showSchedules} />
             </TabsContent>
             <TabsContent value="sun">
-                <DayTable data={invoices} />
+                <DayTable data={showSchedules} />
             </TabsContent>
         </Tabs>
     )

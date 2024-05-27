@@ -13,24 +13,22 @@ const DayTable = ({
     data,
 }: {
     data: {
-        invoice: string
-        paymentStatus: string
-        totalAmount: string
-        paymentMethod: string
+        time: string
+        title: string
+        episode: string
     }[]
 }) => {
     return (
         <Table>
             <TableBody>
                 {data.map((row) => (
-                    <TableRow key={row.invoice}>
+                    <TableRow key={row.time}>
                         <TableCell className="font-medium">
-                            {row.invoice}
+                            {row.time}
                         </TableCell>
-                        <TableCell>{row.paymentStatus}</TableCell>
-                        <TableCell>{row.paymentMethod}</TableCell>
+                        <TableCell>{row.title}</TableCell>
                         <TableCell className="text-right">
-                            {row.totalAmount}
+                            {row.episode}
                         </TableCell>
                     </TableRow>
                 ))}
