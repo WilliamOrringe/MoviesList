@@ -1,6 +1,11 @@
 'use client'
 
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
+import {
+    ComponentPropsWithoutRef,
+    ElementRef,
+    forwardRef,
+    Fragment,
+} from 'react'
 import ThemeSwitcher from '../ThemeSwitcher'
 
 import {
@@ -90,13 +95,15 @@ const Navbar = () => {
                     <NavigationMenuContent>
                         <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                             {genres.map((genre) => (
-                                <ListItem
-                                    key={genre.title}
-                                    title={genre.title}
-                                    href={genre.href}
-                                >
-                                    {genre.description}
-                                </ListItem>
+                                <Fragment key={genre.title}>
+                                    <ListItem
+                                        title={genre.title}
+                                        href={genre.href}
+                                        icon={genre.icon}
+                                    >
+                                        {genre.description}
+                                    </ListItem>
+                                </Fragment>
                             ))}
                         </ul>
                     </NavigationMenuContent>
@@ -118,31 +125,33 @@ const Navbar = () => {
     )
 }
 
-const ListItem = forwardRef<ElementRef<'a'>, ComponentPropsWithoutRef<'a'>>(
-    ({ className, title, children, ...props }, ref) => {
-        return (
-            <li>
-                <NavigationMenuLink asChild>
-                    <a
-                        ref={ref}
-                        className={cn(
-                            'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
-                            className
-                        )}
-                        {...props}
-                    >
-                        <div className="text-sm font-medium leading-none">
-                            {title}
-                        </div>
-                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                            {children}
-                        </p>
-                    </a>
-                </NavigationMenuLink>
-            </li>
-        )
-    }
-)
+const ListItem = forwardRef<
+    ElementRef<'a'>,
+    ComponentPropsWithoutRef<'a'> & { icon?: any }
+>(({ className, title, icon, children, ...props }, ref) => {
+    return (
+        <li>
+            <NavigationMenuLink asChild>
+                <a
+                    ref={ref}
+                    className={cn(
+                        'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+                        className
+                    )}
+                    {...props}
+                >
+                    <div className="text-sm font-medium leading-none flex flex-row gap-2">
+                        {icon}
+                        {title}
+                    </div>
+                    <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                        {children}
+                    </p>
+                </a>
+            </NavigationMenuLink>
+        </li>
+    )
+})
 ListItem.displayName = 'ListItem'
 
 export default Navbar
