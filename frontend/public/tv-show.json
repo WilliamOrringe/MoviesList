@@ -1,0 +1,380 @@
+{
+    "adult": false,
+    "backdrop_path": "/hib8MpBPU7GdluS38htXCF4uw0c.jpg",
+    "created_by": [
+      {
+        "id": 117443,
+        "credit_id": "525743f5760ee36aaa0e0ff8",
+        "name": "Dick Wolf",
+        "original_name": "Dick Wolf",
+        "gender": 2,
+        "profile_path": "/tRMEuYNVFjXYJ7gh1sGJSxq9Vwq.jpg"
+      }
+    ],
+    "episode_run_time": [
+      43
+    ],
+    "first_air_date": "1999-09-20",
+    "genres": [
+      {
+        "id": 80,
+        "name": "Crime"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 9648,
+        "name": "Mystery"
+      }
+    ],
+    "homepage": "http://www.nbc.com/law-and-order-special-victims-unit",
+    "id": 2734,
+    "in_production": true,
+    "languages": [
+      "en"
+    ],
+    "last_air_date": "2024-05-16",
+    "last_episode_to_air": {
+      "id": 5267899,
+      "overview": "The SVU searches for a pattern assailant before his crimes escalate to murder. Fin must contend with a suspect's aggrieved son. Carisi is pressured to close the case quickly to ease public concern.",
+      "name": "Duty to Hope",
+      "vote_average": 7,
+      "vote_count": 1,
+      "air_date": "2024-05-16",
+      "episode_number": 13,
+      "episode_type": "finale",
+      "production_code": "",
+      "runtime": 43,
+      "season_number": 25,
+      "show_id": 2734,
+      "still_path": "/vQuFBtQEs4w1xt4b4WBFAcglrs0.jpg"
+    },
+    "name": "Law & Order: Special Victims Unit",
+    "next_episode_to_air": null,
+    "networks": [
+      {
+        "id": 6,
+        "logo_path": "/cm111bsDVlYaC1foL0itvEI4yLG.png",
+        "name": "NBC",
+        "origin_country": "US"
+      }
+    ],
+    "number_of_episodes": 551,
+    "number_of_seasons": 25,
+    "origin_country": [
+      "US"
+    ],
+    "original_language": "en",
+    "original_name": "Law & Order: Special Victims Unit",
+    "overview": "In the criminal justice system, sexually-based offenses are considered especially heinous. In New York City, the dedicated detectives who investigate these vicious felonies are members of an elite squad known as the Special Victims Unit. These are their stories.",
+    "popularity": 2451.54,
+    "poster_path": "/onmSVwYsPMYtO8OjLdjS8FfRNKb.jpg",
+    "production_companies": [
+      {
+        "id": 25545,
+        "logo_path": "/jH9KNT9C9fYMrGqD4IKLlRL6MYN.png",
+        "name": "Wolf Entertainment",
+        "origin_country": "US"
+      },
+      {
+        "id": 26727,
+        "logo_path": "/jeTxdjXhzgKZyLr3l9MllkTn3fy.png",
+        "name": "Universal Television",
+        "origin_country": "US"
+      },
+      {
+        "id": 56401,
+        "logo_path": null,
+        "name": "Studios USA",
+        "origin_country": "US"
+      },
+      {
+        "id": 8301,
+        "logo_path": "/zrcVDabl14MNfPwxL8DC2IyR12t.png",
+        "name": "Universal Media Studios",
+        "origin_country": "US"
+      }
+    ],
+    "production_countries": [
+      {
+        "iso_3166_1": "US",
+        "name": "United States of America"
+      }
+    ],
+    "seasons": [
+      {
+        "air_date": null,
+        "episode_count": 6,
+        "id": 8888,
+        "name": "Specials",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1999-09-20",
+        "episode_count": 22,
+        "id": 8878,
+        "name": "Season 1",
+        "overview": "",
+        "poster_path": "/3JDK3vC9SuRv1He9tYCGUqFvtQG.jpg",
+        "season_number": 1,
+        "vote_average": 7.2
+      },
+      {
+        "air_date": "2000-10-20",
+        "episode_count": 21,
+        "id": 8877,
+        "name": "Season 2",
+        "overview": "",
+        "poster_path": "/unbMXpSvJ8TTfnDZyKDGfw8UzPy.jpg",
+        "season_number": 2,
+        "vote_average": 7.8
+      },
+      {
+        "air_date": "2001-09-28",
+        "episode_count": 23,
+        "id": 8876,
+        "name": "Season 3",
+        "overview": "",
+        "poster_path": "/tPzDrjnHxEob8WffmAUyRkHzd6F.jpg",
+        "season_number": 3,
+        "vote_average": 7.8
+      },
+      {
+        "air_date": "2002-09-27",
+        "episode_count": 25,
+        "id": 8885,
+        "name": "Season 4",
+        "overview": "",
+        "poster_path": "/mVFYHevnP7rHzmWQDrd4Ht6xSeM.jpg",
+        "season_number": 4,
+        "vote_average": 7.4
+      },
+      {
+        "air_date": "2003-09-23",
+        "episode_count": 25,
+        "id": 8881,
+        "name": "Season 5",
+        "overview": "",
+        "poster_path": "/yTEy3OaaFhHvytThSh0W1psQddl.jpg",
+        "season_number": 5,
+        "vote_average": 7.5
+      },
+      {
+        "air_date": "2004-09-21",
+        "episode_count": 23,
+        "id": 8880,
+        "name": "Season 6",
+        "overview": "",
+        "poster_path": "/p3iU1fLz9h8O1d6g4KrOzKbU2vq.jpg",
+        "season_number": 6,
+        "vote_average": 7.3
+      },
+      {
+        "air_date": "2005-09-20",
+        "episode_count": 22,
+        "id": 8884,
+        "name": "Season 7",
+        "overview": "",
+        "poster_path": "/xWrvoQnxC7qUdVFmJuXhLd4bMfu.jpg",
+        "season_number": 7,
+        "vote_average": 7.4
+      },
+      {
+        "air_date": "2006-09-18",
+        "episode_count": 22,
+        "id": 8879,
+        "name": "Season 8",
+        "overview": "",
+        "poster_path": "/mvNHgkbvREA6ty5lJpW4Dj0ks7L.jpg",
+        "season_number": 8,
+        "vote_average": 7.3
+      },
+      {
+        "air_date": "2007-09-25",
+        "episode_count": 19,
+        "id": 8882,
+        "name": "Season 9",
+        "overview": "",
+        "poster_path": "/hSJbnNHL2Hlm6HO2JzrT0s4vNVZ.jpg",
+        "season_number": 9,
+        "vote_average": 7.6
+      },
+      {
+        "air_date": "2008-09-22",
+        "episode_count": 22,
+        "id": 8883,
+        "name": "Season 10",
+        "overview": "",
+        "poster_path": "/j2qRsT11WL8sX1ULWWxS7opu8Dj.jpg",
+        "season_number": 10,
+        "vote_average": 7.5
+      },
+      {
+        "air_date": "2009-09-23",
+        "episode_count": 24,
+        "id": 8886,
+        "name": "Season 11",
+        "overview": "",
+        "poster_path": "/bcuIWfuiH7Tq9YGSQQZfZmf8UYJ.jpg",
+        "season_number": 11,
+        "vote_average": 7.3
+      },
+      {
+        "air_date": "2010-09-21",
+        "episode_count": 24,
+        "id": 8887,
+        "name": "Season 12",
+        "overview": "",
+        "poster_path": "/igsSNddE8ROWQ19pl88Frx8hKOa.jpg",
+        "season_number": 12,
+        "vote_average": 7.3
+      },
+      {
+        "air_date": "2011-09-21",
+        "episode_count": 23,
+        "id": 8889,
+        "name": "Season 13",
+        "overview": "Season 13 dealt with the departure of Detective Elliot Stabler from the Special Victims Unit after a shooting in the squad room.",
+        "poster_path": "/noc79PeGMcZw2qCiVbyQV8B6q42.jpg",
+        "season_number": 13,
+        "vote_average": 7.5
+      },
+      {
+        "air_date": "2012-09-26",
+        "episode_count": 24,
+        "id": 8890,
+        "name": "Season 14",
+        "overview": "",
+        "poster_path": "/mkdMIq9YYfKQXVB48otcbSr3m04.jpg",
+        "season_number": 14,
+        "vote_average": 7.9
+      },
+      {
+        "air_date": "2013-09-25",
+        "episode_count": 24,
+        "id": 8891,
+        "name": "Season 15",
+        "overview": "",
+        "poster_path": "/9unR6QVh6WBiAv0CK1admWtM8Tx.jpg",
+        "season_number": 15,
+        "vote_average": 8.2
+      },
+      {
+        "air_date": "2014-09-24",
+        "episode_count": 23,
+        "id": 62900,
+        "name": "Season 16",
+        "overview": "",
+        "poster_path": "/fxONX6Mav1LUxtEfMVfRnThUoUw.jpg",
+        "season_number": 16,
+        "vote_average": 8.1
+      },
+      {
+        "air_date": "2015-09-23",
+        "episode_count": 23,
+        "id": 68816,
+        "name": "Season 17",
+        "overview": "",
+        "poster_path": "/ncwK9fT1cxV5LIZkRLhScd0ksFO.jpg",
+        "season_number": 17,
+        "vote_average": 8.3
+      },
+      {
+        "air_date": "2016-09-21",
+        "episode_count": 21,
+        "id": 79484,
+        "name": "Season 18",
+        "overview": "",
+        "poster_path": "/4QdKXQf1NhxpcTYZJ8Frf7RwHV4.jpg",
+        "season_number": 18,
+        "vote_average": 7.9
+      },
+      {
+        "air_date": "2017-09-27",
+        "episode_count": 24,
+        "id": 91257,
+        "name": "Season 19",
+        "overview": "",
+        "poster_path": "/yzMQBlirydvKp4Zgr5FbXlsrRmw.jpg",
+        "season_number": 19,
+        "vote_average": 7.9
+      },
+      {
+        "air_date": "2018-09-27",
+        "episode_count": 24,
+        "id": 105509,
+        "name": "Season 20",
+        "overview": "",
+        "poster_path": "/yb8dhag59L0JKAVh1Yz1i1MJW4f.jpg",
+        "season_number": 20,
+        "vote_average": 7.5
+      },
+      {
+        "air_date": "2019-09-26",
+        "episode_count": 20,
+        "id": 129334,
+        "name": "Season 21",
+        "overview": "",
+        "poster_path": "/7k7T2rL0WoSJiSFFI6zUsq5a0GS.jpg",
+        "season_number": 21,
+        "vote_average": 7.5
+      },
+      {
+        "air_date": "2020-11-12",
+        "episode_count": 16,
+        "id": 160634,
+        "name": "Season 22",
+        "overview": "",
+        "poster_path": "/jDCgWVlejIo8sQYxw3Yf1cVQUIL.jpg",
+        "season_number": 22,
+        "vote_average": 8.3
+      },
+      {
+        "air_date": "2021-09-23",
+        "episode_count": 22,
+        "id": 202465,
+        "name": "Season 23",
+        "overview": "",
+        "poster_path": "/ywBt4WKADdMVgxTR1rS2uFwMYTH.jpg",
+        "season_number": 23,
+        "vote_average": 8.4
+      },
+      {
+        "air_date": "2022-09-22",
+        "episode_count": 22,
+        "id": 299109,
+        "name": "Season 24",
+        "overview": "",
+        "poster_path": "/e8cx3BVz6jJDLEgW02UQhEBtsZw.jpg",
+        "season_number": 24,
+        "vote_average": 8.4
+      },
+      {
+        "air_date": "2024-01-18",
+        "episode_count": 13,
+        "id": 366618,
+        "name": "Season 25",
+        "overview": "",
+        "poster_path": "/cK6Pn91ZwwO2osSjRNkDPK9qWa2.jpg",
+        "season_number": 25,
+        "vote_average": 8.5
+      }
+    ],
+    "spoken_languages": [
+      {
+        "english_name": "English",
+        "iso_639_1": "en",
+        "name": "English"
+      }
+    ],
+    "status": "Returning Series",
+    "tagline": "The fight never ends.",
+    "type": "Scripted",
+    "vote_average": 7.937,
+    "vote_count": 3666
+  }
