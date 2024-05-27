@@ -1,6 +1,4 @@
-import Image from 'next/image'
 import getMovies from './_actions/actions'
-import { Fragment } from 'react'
 import { MoviesGrid } from '@/components/movie-grid/movies'
 
 const Page = async () => {
