@@ -5,7 +5,6 @@ const Page = () => {
     return (
         <div className="flex flex-col space-y-10">
             <Home />
-            <Schedule />
         </div>
     )
 }
