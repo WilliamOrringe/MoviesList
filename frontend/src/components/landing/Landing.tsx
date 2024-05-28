@@ -76,7 +76,7 @@ const Landing = () => {
             <div className="h-[20rem] rounded-md antialiased bg-transparent items-center justify-center relative mt-20">
                 <InfiniteMovingCards
                     items={testimonials}
-                    direction="right"
+                    direction="left"
                     speed="slow"
                 />
             </div>
