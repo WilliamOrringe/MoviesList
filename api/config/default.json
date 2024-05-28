@@ -20,7 +20,8 @@
     "secret": "EZU0YMReJQGNhDw+YkGCjmGBkKSjq/qz",
     "authStrategies": [
       "jwt",
-      "local"
+      "local",
+      "auth0"
     ],
     "jwtOptions": {
       "header": {
@@ -35,9 +36,12 @@
       "passwordField": "password"
     },
     "oauth": {
-      "google": {
-        "key": "<Client ID>",
-        "secret": "<Client secret>"
+      "redirect": "localhost:3000/",
+      "auth0": {
+        "key": "*************",
+        "secret": "*************",
+        "subdomain": "movies-list.uk",
+        "scope": ["openid", "profile", "email"]
       }
     }
   }

@@ -2,5 +2,6 @@ frontend/node_modules
 frontend/.next
 api/node_modules
 /api/node_modules
+node_modules
 
 frontend/.env

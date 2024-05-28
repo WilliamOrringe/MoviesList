@@ -16,6 +16,7 @@
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-navigation-menu": "^1.1.4",
     "@radix-ui/react-tabs": "^1.0.4",
+    "@sinclair/typebox": "^0.32.31",
     "@tabler/icons-react": "^3.5.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -24,8 +25,10 @@
     "next": "14.2.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.51.5",
     "tailwind-merge": "^2.3.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "typebox": "^0.0.1"
   },
   "devDependencies": {
     "@types/node": "^20.12.8",
