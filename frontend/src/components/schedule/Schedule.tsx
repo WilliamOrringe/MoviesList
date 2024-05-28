@@ -58,7 +58,7 @@ const Schedule = () => {
             <TabsList className="grid w-full grid-cols-7">
                 {dayOrders.map((day) => (
                     <TabsTrigger key={day} value={day}>
-                        {day}
+                        {day.toUpperCase()}
                     </TabsTrigger>
                 ))}
             </TabsList>
