@@ -1,3 +1,4 @@
+'use client'
 import { useForm } from 'react-hook-form'
 import { Type as z, type Static } from '@sinclair/typebox'
 
@@ -23,10 +24,13 @@ const LoginPage = () => {
     return (
         <div>
             <h1>Login Page</h1>
+            <a href="/api/auth/login">Login</a>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <label>Email</label>
                     <input
+                        className="bg-transparent text-white pr-4"
+                        placeholder="Email"
                         type="text"
                         {...register('email', { required: true })}
                     />
@@ -35,7 +39,9 @@ const LoginPage = () => {
                 <div>
                     <label>Password</label>
                     <input
+                        className="bg-transparent text-white pr-4"
                         type="password"
+                        placeholder="Password"
                         {...register('password', { required: true })}
                     />
                     {errors.password && <span>Password is required</span>}

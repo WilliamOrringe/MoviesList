@@ -68,7 +68,7 @@ const Landing = () => {
         router.push('/search')
     }
     return (
-        <div className="px-4">
+        <div>
             <div className="mb-10 sm:mb-10 text-xl sm:text-5xl dark:text-white text-black mt-20 flex justify-center">
                 <TypewriterEffectSmooth words={words} />
             </div>
@@ -80,7 +80,7 @@ const Landing = () => {
             <div className="h-[20rem] rounded-md antialiased bg-transparent items-center justify-center relative mt-20">
                 <InfiniteMovingCards
                     items={testimonials}
-                    direction="right"
+                    direction="left"
                     speed="slow"
                 />
             </div>
