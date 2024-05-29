@@ -1,11 +1,14 @@
 'use client'
 
+import { redirect, useRouter } from 'next/navigation'
 import { InfiniteMovingCards } from '../ui/infinite-moving-cards'
 import { PlaceholdersAndVanishInput } from '../ui/placeholders-and-vanish-input'
 import { TypewriterEffectSmooth } from '../ui/typewriter-effect'
 import { placeholders } from './placeholders'
 
 const Landing = () => {
+    const router = useRouter()
+
     const testimonials = [
         {
             quote: 'It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.',
@@ -62,6 +65,7 @@ const Landing = () => {
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         console.log('submitted')
+        router.push('/search')
     }
     return (
         <div className="px-4">

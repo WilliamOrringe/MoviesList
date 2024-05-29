@@ -1,4 +1,3 @@
-import Schedule from '@/components/schedule/Schedule'
 import Home from './_home/home'
 
 const Page = () => {
