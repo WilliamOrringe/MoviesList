@@ -22,7 +22,7 @@ export const MoviesGrid = ({
                             className="h-full w-full object-cover col-span-1 z-1 rounded-lg"
                         />
                         {/* <div className="bg-gray-100 w-full h-full"></div> */}
-                        <div className="z-40 h-20 bg-white dark:bg-slate-950 p-4 opacity-0  group-hover:opacity-100 relative rounded-b-lg -mt-1">
+                        <div className="absolute left-0 bottom-0 z-40 w-full h-20 bg-white dark:bg-slate-950 p-4 opacity-0 group-hover:opacity-80 rounded-b-lg -mt-1">
                             <h2 className="text-lg font-semibold dark:text-white text-black">
                                 {movieInfo.title}
                             </h2>
