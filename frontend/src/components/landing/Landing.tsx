@@ -64,7 +64,7 @@ const Landing = () => {
         console.log('submitted')
     }
     return (
-        <div className="px-4">
+        <div>
             <div className="mb-10 sm:mb-10 text-xl sm:text-5xl dark:text-white text-black mt-20 flex justify-center">
                 <TypewriterEffectSmooth words={words} />
             </div>

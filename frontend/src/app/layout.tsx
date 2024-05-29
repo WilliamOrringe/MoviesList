@@ -8,7 +8,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     return (
         <html
             lang="en-GB"
-            className="dark dark:bg-backgroundDark dark:text-textDark dark:accent-accentDark bg-backgroundLight text-textDark accent-accentLight m-12"
+            className="dark dark:bg-backgroundDark dark:text-textDark dark:accent-accentDark bg-backgroundLight text-textDark accent-accentLight m-2.5"
         >
             <body className="flex flex-col space-y-4 max-w-screen-xl mx-auto justify-center">
                 <Navbar />
