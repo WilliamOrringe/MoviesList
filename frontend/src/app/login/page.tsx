@@ -24,6 +24,7 @@ const LoginPage = () => {
     return (
         <div>
             <h1>Login Page</h1>
+            <a href="/api/auth/login">Login</a>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <label>Email</label>
