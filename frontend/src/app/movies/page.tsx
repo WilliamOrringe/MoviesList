@@ -44,7 +44,7 @@ const Page = async () => {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-            </Carousel>
+            </Carousel> 
             <h1 className="text-4xl mb-10">Trending now</h1>
             <MoviesGrid movieList={moviesInfoList} />
         </div>

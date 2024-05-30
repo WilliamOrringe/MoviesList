@@ -31,7 +31,9 @@ const Navbar = () => {
             <NavigationMenu>
                 <NavigationMenuList>
                     <NavigationMenuItem>
-                        <NavigationMenuTrigger>Home</NavigationMenuTrigger>
+                        <Link href="/" passHref>
+                            <NavigationMenuTrigger>Home</NavigationMenuTrigger>
+                        </Link>
                         <NavigationMenuContent>
                             <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] z-99">
                                 <li className="row-span-3 z-99">
@@ -56,28 +58,24 @@ const Navbar = () => {
                                         </a>
                                     </NavigationMenuLink>
                                 </li>
-                                <ListItem href="/docs" title="Introduction">
+                                <ListItem href="/" title="Introduction">
                                     Re-usable components built using Radix UI
                                     and Tailwind CSS.
                                 </ListItem>
-                                <ListItem
-                                    href="/docs/installation"
-                                    title="Installation"
-                                >
+                                <ListItem href="/" title="Installation">
                                     How to install dependencies and structure
                                     your app.
                                 </ListItem>
-                                <ListItem
-                                    href="/docs/primitives/typography"
-                                    title="Typography"
-                                >
+                                <ListItem href="/" title="Typography">
                                     Styles for headings, paragraphs, lists...etc
                                 </ListItem>
                             </ul>
                         </NavigationMenuContent>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <NavigationMenuTrigger>Shows</NavigationMenuTrigger>
+                        <Link href="/shows" legacyBehavior passHref>
+                            <NavigationMenuTrigger>Shows</NavigationMenuTrigger>
+                        </Link>
                         <NavigationMenuContent>
                             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                                 {shows.map((show) => (
@@ -93,7 +91,11 @@ const Navbar = () => {
                         </NavigationMenuContent>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <NavigationMenuTrigger>Genres</NavigationMenuTrigger>
+                        <Link href="/search" legacyBehavior passHref>
+                            <NavigationMenuTrigger>
+                                Genres
+                            </NavigationMenuTrigger>
+                        </Link>
                         <NavigationMenuContent>
                             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                                 {genres.map((genre) => (
@@ -111,7 +113,7 @@ const Navbar = () => {
                         </NavigationMenuContent>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <Link href="/docs" legacyBehavior passHref>
+                        <Link href="/" legacyBehavior passHref>
                             <NavigationMenuLink
                                 className={navigationMenuTriggerStyle()}
                             >
