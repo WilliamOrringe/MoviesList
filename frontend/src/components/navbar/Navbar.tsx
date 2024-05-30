@@ -24,8 +24,14 @@ import { faLaptop } from '@fortawesome/free-solid-svg-icons'
 import { cn } from '@/lib/utils'
 import { shows } from './shows'
 import { genres } from './genres'
+import { useUser } from '@auth0/nextjs-auth0/client'
 
 const Navbar = () => {
+    const { user, error, isLoading } = useUser()
+
+    if (isLoading) return <div>Loading...</div>
+    if (error) return <div>{error.message}</div>
+
     return (
         <div className="flex flex-row justify-between">
             <NavigationMenu>
@@ -128,11 +134,11 @@ const Navbar = () => {
                     <NavigationMenuItem>
                         <ThemeSwitcher />
                     </NavigationMenuItem>
-                    <NavigationMenuItem>
+                    <NavigationMenuItem className="hover:cursor-pointer">
                         <Avatar>
                             <AvatarImage
-                                src="https://github.com/shadcn.png"
-                                alt="@shadcn"
+                                src={user?.picture ?? ''}
+                                alt="user profile picture"
                             />
                             <AvatarFallback>CN</AvatarFallback>
                         </Avatar>

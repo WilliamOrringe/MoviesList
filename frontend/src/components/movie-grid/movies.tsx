@@ -13,18 +13,6 @@ export const MoviesGrid = ({
     if (error) return <div>{error.message}</div>
     return (
         <>
-            {user && (
-                <div>
-                    <Image
-                        src={user?.picture ?? ''}
-                        alt={user?.name ?? 'FAKE'}
-                        width={300}
-                        height={300}
-                    />
-                    <h2>{user?.name}</h2>
-                    <p>{user?.email}</p>
-                </div>
-            )}
             <div className="grid grid-cols-4 gap-x-4 gap-y-[10px]">
                 {movieList.map((movieInfo, i: number) => (
                     <Fragment key={i}>
