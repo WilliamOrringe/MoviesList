@@ -19,11 +19,8 @@ import {
     navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLaptop } from '@fortawesome/free-solid-svg-icons'
 import { cn } from '@/lib/utils'
-import { shows } from './shows'
-import { genres } from './genres'
+import { FilmGenres, ShowGenres } from './genres'
 import { useUser } from '@auth0/nextjs-auth0/client'
 
 const Navbar = () => {
@@ -37,74 +34,21 @@ const Navbar = () => {
             <NavigationMenu>
                 <NavigationMenuList>
                     <NavigationMenuItem>
-                        <Link href="/" passHref>
-                            <NavigationMenuTrigger>Home</NavigationMenuTrigger>
+                        <Link href="/" legacyBehavior passHref>
+                            <NavigationMenuLink
+                                className={navigationMenuTriggerStyle()}
+                            >
+                                Home
+                            </NavigationMenuLink>
                         </Link>
-                        <NavigationMenuContent>
-                            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] z-99">
-                                <li className="row-span-3 z-99">
-                                    <NavigationMenuLink asChild>
-                                        <a
-                                            className="z-99 flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                                            href="/"
-                                        >
-                                            <FontAwesomeIcon
-                                                icon={faLaptop}
-                                                className="h-6 w-6"
-                                            />
-                                            <div className="mb-2 mt-4 text-lg font-medium">
-                                                shadcn/ui
-                                            </div>
-                                            <p className="text-sm leading-tight text-muted-foreground">
-                                                Beautifully designed components
-                                                that you can copy and paste into
-                                                your apps. Accessible.
-                                                Customizable. Open Source.
-                                            </p>
-                                        </a>
-                                    </NavigationMenuLink>
-                                </li>
-                                <ListItem href="/" title="Introduction">
-                                    Re-usable components built using Radix UI
-                                    and Tailwind CSS.
-                                </ListItem>
-                                <ListItem href="/" title="Installation">
-                                    How to install dependencies and structure
-                                    your app.
-                                </ListItem>
-                                <ListItem href="/" title="Typography">
-                                    Styles for headings, paragraphs, lists...etc
-                                </ListItem>
-                            </ul>
-                        </NavigationMenuContent>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <Link href="/shows" legacyBehavior passHref>
+                        <Link href="/shows?sort=trending&genre=all" passHref>
                             <NavigationMenuTrigger>Shows</NavigationMenuTrigger>
                         </Link>
                         <NavigationMenuContent>
                             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                                {shows.map((show) => (
-                                    <ListItem
-                                        key={show.title}
-                                        title={show.title}
-                                        href={show.href}
-                                    >
-                                        {show.description}
-                                    </ListItem>
-                                ))}
-                            </ul>
-                        </NavigationMenuContent>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <Link href="/search" legacyBehavior passHref>
-                            <NavigationMenuTrigger>
-                                Genres
-                            </NavigationMenuTrigger>
-                        </Link>
-                        <NavigationMenuContent>
-                            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                                {genres.map((genre) => (
+                                {ShowGenres.map((genre) => (
                                     <Fragment key={genre.title}>
                                         <ListItem
                                             title={genre.title}
@@ -119,13 +63,26 @@ const Navbar = () => {
                         </NavigationMenuContent>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <Link href="/" legacyBehavior passHref>
-                            <NavigationMenuLink
-                                className={navigationMenuTriggerStyle()}
-                            >
-                                Documentation
-                            </NavigationMenuLink>
+                        <Link href="/shows?sort=trending" passHref>
+                            <NavigationMenuTrigger>
+                                Movies
+                            </NavigationMenuTrigger>
                         </Link>
+                        <NavigationMenuContent>
+                            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                                {FilmGenres.map((genre) => (
+                                    <Fragment key={genre.title}>
+                                        <ListItem
+                                            title={genre.title}
+                                            href={genre.href}
+                                            icon={genre.icon}
+                                        >
+                                            {genre.description}
+                                        </ListItem>
+                                    </Fragment>
+                                ))}
+                            </ul>
+                        </NavigationMenuContent>
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
