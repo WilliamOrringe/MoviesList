@@ -22,6 +22,8 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { FilmGenres, ShowGenres } from './genres'
 import { useUser } from '@auth0/nextjs-auth0/client'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFilm } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = () => {
     const { user, error, isLoading } = useUser()
@@ -47,42 +49,103 @@ const Navbar = () => {
                             <NavigationMenuTrigger>Shows</NavigationMenuTrigger>
                         </Link>
                         <NavigationMenuContent>
-                            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                                {ShowGenres.map((genre) => (
-                                    <Fragment key={genre.title}>
-                                        <ListItem
-                                            title={genre.title}
-                                            href={genre.href}
-                                            icon={genre.icon}
+                            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-1 lg:w-[600px] ">
+                                <li className="row-span-3">
+                                    <NavigationMenuLink asChild>
+                                        <a
+                                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                                            href="/shows"
                                         >
-                                            {genre.description}
-                                        </ListItem>
-                                    </Fragment>
-                                ))}
+                                            <FontAwesomeIcon
+                                                icon={faFilm}
+                                                className="w-5 h-5"
+                                            />
+                                            <div className="mb-2 mt-4 text-lg font-medium">
+                                                Shows
+                                            </div>
+                                            <p className="text-sm leading-tight text-muted-foreground">
+                                                Beautifully designed components
+                                                that you can copy and paste into
+                                                your apps. Accessible.
+                                                Customizable. Open Source.
+                                            </p>
+                                        </a>
+                                    </NavigationMenuLink>
+                                </li>
+                                <li>
+                                    <ul className="grid gap-3 p-4 md:grid-cols-2 w-full ">
+                                        {ShowGenres.map((genre) => (
+                                            <Fragment key={genre.title}>
+                                                <ListItem
+                                                    title={genre.title}
+                                                    href={genre.href}
+                                                    icon={genre.icon}
+                                                >
+                                                    {genre.description}
+                                                </ListItem>
+                                            </Fragment>
+                                        ))}
+                                    </ul>
+                                </li>
                             </ul>
                         </NavigationMenuContent>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <Link href="/shows?sort=trending" passHref>
+                        <Link href="/movies?sort=trending&genre=all" passHref>
                             <NavigationMenuTrigger>
                                 Movies
                             </NavigationMenuTrigger>
                         </Link>
                         <NavigationMenuContent>
-                            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                                {FilmGenres.map((genre) => (
-                                    <Fragment key={genre.title}>
-                                        <ListItem
-                                            title={genre.title}
-                                            href={genre.href}
-                                            icon={genre.icon}
+                            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-1 lg:w-[600px] ">
+                                <li className="row-span-3">
+                                    <NavigationMenuLink asChild>
+                                        <a
+                                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                                            href="/movies?sort=trending"
                                         >
-                                            {genre.description}
-                                        </ListItem>
-                                    </Fragment>
-                                ))}
+                                            <FontAwesomeIcon
+                                                icon={faFilm}
+                                                className="w-5 h-5"
+                                            />
+                                            <div className="mb-2 mt-4 text-lg font-medium">
+                                                Movies
+                                            </div>
+                                            <p className="text-sm leading-tight text-muted-foreground">
+                                                Beautifully designed components
+                                                that you can copy and paste into
+                                                your apps. Accessible.
+                                                Customizable. Open Source.
+                                            </p>
+                                        </a>
+                                    </NavigationMenuLink>
+                                </li>
+                                <li>
+                                    <ul className="grid gap-3 p-4 md:grid-cols-2 w-full ">
+                                        {FilmGenres.map((genre) => (
+                                            <Fragment key={genre.title}>
+                                                <ListItem
+                                                    title={genre.title}
+                                                    href={genre.href}
+                                                    icon={genre.icon}
+                                                >
+                                                    {genre.description}
+                                                </ListItem>
+                                            </Fragment>
+                                        ))}
+                                    </ul>
+                                </li>
                             </ul>
                         </NavigationMenuContent>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
+                        <Link href="/schedule" legacyBehavior passHref>
+                            <NavigationMenuLink
+                                className={navigationMenuTriggerStyle()}
+                            >
+                                Schedules
+                            </NavigationMenuLink>
+                        </Link>
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>

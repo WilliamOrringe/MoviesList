@@ -1,3 +1,5 @@
+'use server'
+
 import getMovies from './_actions/actions'
 import { MoviesGrid } from '@/components/movie-grid/movies'
 import {
@@ -28,6 +30,7 @@ const Page = async () => {
 
     return (
         <div>
+            <h1 className="text-4xl mb-10">Movies</h1>
             <Carousel className="w-full">
                 <CarouselContent>
                     {Array.from({ length: 5 }).map((_, index) => (
@@ -44,7 +47,7 @@ const Page = async () => {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-            </Carousel> 
+            </Carousel>
             <h1 className="text-4xl mb-10">Trending now</h1>
             <MoviesGrid movieList={moviesInfoList} />
         </div>

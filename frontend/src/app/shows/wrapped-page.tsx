@@ -62,6 +62,7 @@ const ShowsHomePage = ({
         })
     return (
         <div>
+            <h1 className="text-4xl mb-10">Shows</h1>
             <Carousel className="w-full">
                 <CarouselContent>
                     {Array.from({ length: 5 }).map((_, index) => (

@@ -1,11 +1,11 @@
 'use server'
 
-import Landing from '@/components/landing/Landing'
-import getMovies from '@/components/movie-grid/_actions/actions'
 import { MoviesGrid } from '@/components/movie-grid/movies'
 import Schedule from '@/components/schedule/Schedule'
+import React from 'react'
+import getMovies from '../search/_actions/actions'
 
-const Home = async () => {
+const Page = async () => {
     const moviesList = await getMovies()
 
     const moviesInfoList = moviesList.results.map((movie: any) => {
@@ -16,9 +16,10 @@ const Home = async () => {
     })
     return (
         <div className="flex flex-col gap-40 ">
-            <Landing />
+            <MoviesGrid movieList={moviesInfoList} />
+            <Schedule />
         </div>
     )
 }
 
-export default Home
+export default Page

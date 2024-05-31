@@ -1,3 +1,5 @@
+'use server'
+
 import Home from './_home/home'
 
 const Page = () => {
