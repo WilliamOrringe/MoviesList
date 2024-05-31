@@ -2,6 +2,21 @@
 import { Fragment } from 'react'
 import Image from 'next/image'
 import { useUser } from '@auth0/nextjs-auth0/client'
+import { Button } from '../ui/button'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+    faGripHorizontal,
+    faGripVertical,
+} from '@fortawesome/free-solid-svg-icons'
+import {
+    Pagination,
+    PaginationContent,
+    PaginationEllipsis,
+    PaginationItem,
+    PaginationLink,
+    PaginationNext,
+    PaginationPrevious,
+} from '../ui/pagination'
 export const MoviesGrid = ({
     movieList,
 }: {
@@ -13,6 +28,17 @@ export const MoviesGrid = ({
     if (error) return <div>{error.message}</div>
     return (
         <>
+            <div className="flex flex-row justify-between">
+                <div>{movieList.length} items</div>
+                <div className="flex flex-row gap-2">
+                    <Button>
+                        <FontAwesomeIcon icon={faGripVertical} />
+                    </Button>
+                    <Button>
+                        <FontAwesomeIcon icon={faGripHorizontal} />
+                    </Button>
+                </div>
+            </div>
             <div className="grid grid-cols-4 gap-x-4 gap-y-[10px]">
                 {movieList.map((movieInfo, i: number) => (
                     <Fragment key={i}>
@@ -38,6 +64,22 @@ export const MoviesGrid = ({
                     </Fragment>
                 ))}
             </div>
+            <Pagination>
+                <PaginationContent>
+                    <PaginationItem>
+                        <PaginationPrevious href="#" />
+                    </PaginationItem>
+                    <PaginationItem>
+                        <PaginationLink href="#">1</PaginationLink>
+                    </PaginationItem>
+                    <PaginationItem>
+                        <PaginationEllipsis />
+                    </PaginationItem>
+                    <PaginationItem>
+                        <PaginationNext href="#" />
+                    </PaginationItem>
+                </PaginationContent>
+            </Pagination>
         </>
     )
 }

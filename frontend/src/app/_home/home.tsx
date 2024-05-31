@@ -15,7 +15,7 @@ const Home = async () => {
         }
     })
     return (
-        <div className="flex flex-col gap-40 ">
+        <div className="flex flex-col gap-10 ">
             <Landing />
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
                 <WobbleCard

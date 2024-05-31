@@ -68,8 +68,8 @@ const Landing = () => {
         router.push('/search')
     }
     return (
-        <div>
-            <div className="mb-10 sm:mb-10 text-xl sm:text-5xl dark:text-white text-black mt-20 flex justify-center">
+        <div className="h-screen">
+            <div className="mb-10 sm:mb-10 text-xl sm:text-5xl dark:text-white text-black mt-40 flex justify-center">
                 <TypewriterEffectSmooth words={words} />
             </div>
             <PlaceholdersAndVanishInput
@@ -77,7 +77,7 @@ const Landing = () => {
                 onChange={handleChange}
                 onSubmit={onSubmit}
             />
-            <div className="h-[20rem] rounded-md antialiased bg-transparent items-center justify-center relative mt-20">
+            <div className="h-[20rem] rounded-md antialiased bg-transparent items-center justify-center relative mt-40">
                 <InfiniteMovingCards
                     items={testimonials}
                     direction="left"

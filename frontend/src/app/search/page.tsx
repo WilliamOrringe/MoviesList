@@ -5,6 +5,9 @@ import { MoviesGrid } from '@/components/movie-grid/movies'
 import { Input } from '@/components/ui/input'
 import Filter from '@/components/filter/filter'
 import { MovieGenres } from '@/utils/movieGenres'
+import { Button } from '@/components/ui/button'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFilter } from '@fortawesome/free-solid-svg-icons'
 
 const Page = async () => {
     const moviesList = await getMovies()
@@ -96,6 +99,13 @@ const Page = async () => {
                         placeholder="Trending"
                         search="Trending"
                     />
+                    <Button>
+                        <FontAwesomeIcon
+                            icon={faFilter}
+                            className="mr-2 h-4 w-4"
+                        />{' '}
+                        Filter
+                    </Button>
                 </div>
                 <MoviesGrid movieList={moviesInfoList} />
             </div>
