@@ -1,13 +1,10 @@
 'use server'
 
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from '@/components/ui/accordion'
 import getMovies from './_actions/actions'
 import { MoviesGrid } from '@/components/movie-grid/movies'
+import { Input } from '@/components/ui/input'
+import Filter from '@/components/filter/filter'
+import { MovieGenres } from '@/utils/movieGenres'
 
 const Page = async () => {
     const moviesList = await getMovies()
@@ -19,32 +16,87 @@ const Page = async () => {
         }
     })
 
+    interface Filter {
+        value: string
+        label: string
+    }
+
+    const status = [
+        {
+            value: 'not_yet_aired',
+            label: 'Not Yet Aired',
+        },
+        {
+            value: 'airing',
+            label: 'Airing',
+        },
+        {
+            value: 'completed',
+            label: 'Completed',
+        },
+        {
+            value: 'cancelled',
+            label: 'Cancelled',
+        },
+    ]
+
+    const currYear = new Date().getFullYear()
+    const years: Filter[] = [
+        ...Array.from({ length: 30 }, (_, i) => {
+            return {
+                value: (currYear - i).toString(),
+                label: (currYear - i).toString(),
+            }
+        }),
+        ...Array.from({ length: 11 }, (_, i) => {
+            return {
+                value: (1900 - i * 10).toString() + 's',
+                label: (1900 - i * 10).toString() + 's',
+            }
+        }),
+    ]
+
+    const sortOrder = [
+        {
+            value: 'trending',
+            label: 'Trending',
+        },
+        {
+            value: 'scores',
+            label: 'Scores',
+        },
+        {
+            value: 'alphabetical',
+            label: 'Alphabetical',
+        },
+    ]
+
     return (
         <div>
             <h1 className="text-4xl mb-10">Advanced Search</h1>
-            <div className="flex flex-row gap-4">
-                <Accordion type="single" collapsible className="w-1/3">
-                    <AccordionItem value="item-1">
-                        <AccordionTrigger>Name</AccordionTrigger>
-                        <AccordionContent>
-                            Yes. It adheres to the WAI-ARIA design pattern.
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-2">
-                        <AccordionTrigger>Year</AccordionTrigger>
-                        <AccordionContent>
-                            Yes. It comes with default styles that matches the
-                            other components&apos; aesthetic.
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-3">
-                        <AccordionTrigger>Genre</AccordionTrigger>
-                        <AccordionContent>
-                            Yes. It&apos;s animated by default, but you can
-                            disable it if you prefer.
-                        </AccordionContent>
-                    </AccordionItem>
-                </Accordion>
+            <div className="flex flex-col gap-4">
+                <div className="flex flex-row gap-4">
+                    <Filter
+                        values={MovieGenres}
+                        placeholder="Select genre"
+                        search="Searching genre"
+                    />
+                    <Filter
+                        values={years}
+                        placeholder="Select year"
+                        search="Searching year"
+                    />
+                    <Filter
+                        values={status}
+                        placeholder="Select status"
+                        search="Searching status"
+                    />
+                    <Filter
+                        values={sortOrder}
+                        placeholder="Trending"
+                        search="Trending"
+                    />
+                </div>
                 <MoviesGrid movieList={moviesInfoList} />
             </div>
         </div>

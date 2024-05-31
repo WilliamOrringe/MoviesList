@@ -18,12 +18,30 @@ import {
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
+import {
+    Command,
+    CommandDialog,
+    CommandEmpty,
+    CommandGroup,
+    CommandInput,
+    CommandItem,
+    CommandList,
+    CommandSeparator,
+    CommandShortcut,
+} from '@/components/ui/command'
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from '@/components/ui/popover'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { FilmGenres, ShowGenres } from './genres'
 import { useUser } from '@auth0/nextjs-auth0/client'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilm } from '@fortawesome/free-solid-svg-icons'
+import { Button } from '../ui/button'
+import { MovieGenres } from '@/utils/movieGenres'
 
 const Navbar = () => {
     const { user, error, isLoading } = useUser()
@@ -74,10 +92,10 @@ const Navbar = () => {
                                 </li>
                                 <li>
                                     <ul className="grid gap-3 p-4 md:grid-cols-2 w-full ">
-                                        {ShowGenres.map((genre) => (
-                                            <Fragment key={genre.title}>
+                                        {MovieGenres.map((genre) => (
+                                            <Fragment key={genre.value}>
                                                 <ListItem
-                                                    title={genre.title}
+                                                    title={genre.label}
                                                     href={genre.href}
                                                     icon={genre.icon}
                                                 >
@@ -122,10 +140,10 @@ const Navbar = () => {
                                 </li>
                                 <li>
                                     <ul className="grid gap-3 p-4 md:grid-cols-2 w-full ">
-                                        {FilmGenres.map((genre) => (
-                                            <Fragment key={genre.title}>
+                                        {MovieGenres.map((genre) => (
+                                            <Fragment key={genre.value}>
                                                 <ListItem
-                                                    title={genre.title}
+                                                    title={genre.label}
                                                     href={genre.href}
                                                     icon={genre.icon}
                                                 >
