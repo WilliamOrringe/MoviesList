@@ -1,5 +1,5 @@
 'use client'
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import Image from 'next/image'
 import { useUser } from '@auth0/nextjs-auth0/client'
 import { Button } from '../ui/button'
@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faGripHorizontal,
     faGripVertical,
+    faSortAsc,
 } from '@fortawesome/free-solid-svg-icons'
 import {
     Pagination,
@@ -17,20 +18,108 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from '../ui/pagination'
+import {
+    Command,
+    CommandEmpty,
+    CommandGroup,
+    CommandInput,
+    CommandItem,
+    CommandList,
+} from '@/components/ui/command'
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from '@/components/ui/popover'
+import { Check, ChevronsUpDown } from 'lucide-react'
+import { cn } from '@/lib/utils'
+
 export const MoviesGrid = ({
     movieList,
 }: {
     movieList: { image: string; title: string }[]
 }) => {
+    const sortOrders = [
+        {
+            value: 'trending',
+            label: 'Trending',
+        },
+        {
+            value: 'scores',
+            label: 'Scores',
+        },
+        {
+            value: 'alphabetical',
+            label: 'Alphabetical',
+        },
+    ]
+
     const { user, error, isLoading } = useUser()
+    const [open, setOpen] = useState<boolean>(false)
+    const [value, setValue] = useState<string>('Trending')
 
     if (isLoading) return <div>Loading...</div>
     if (error) return <div>{error.message}</div>
+
     return (
         <div className="flex flex-col gap-4">
             <div className="flex flex-row justify-between">
                 <div>{movieList.length} items</div>
                 <div className="flex flex-row gap-2">
+                    <Popover open={open} onOpenChange={setOpen}>
+                        <PopoverTrigger asChild>
+                            <Button
+                                variant="outline"
+                                role="combobox"
+                                aria-expanded={open}
+                                className="w-[200px] justify-between"
+                            >
+                                {value
+                                    ? sortOrders.find(
+                                          (sortOrder) =>
+                                              sortOrder.value === value
+                                      )?.label
+                                    : 'Select Sort Order'}
+                                <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                            </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-[200px] p-0">
+                            <Command>
+                                <CommandGroup>
+                                    <CommandList>
+                                        {sortOrders.map((sortOrder) => (
+                                            <CommandItem
+                                                key={sortOrder.value}
+                                                value={sortOrder.value}
+                                                onSelect={(currentValue) => {
+                                                    setValue(
+                                                        currentValue === value
+                                                            ? 'Trending'
+                                                            : currentValue
+                                                    )
+                                                    setOpen(false)
+                                                }}
+                                            >
+                                                <Check
+                                                    className={cn(
+                                                        'mr-2 h-4 w-4',
+                                                        value ===
+                                                            sortOrder.value
+                                                            ? 'opacity-100'
+                                                            : 'opacity-0'
+                                                    )}
+                                                />
+                                                {sortOrder.label}
+                                            </CommandItem>
+                                        ))}
+                                    </CommandList>
+                                </CommandGroup>
+                            </Command>
+                        </PopoverContent>
+                    </Popover>
+                    <Button>
+                        <FontAwesomeIcon icon={faSortAsc} />
+                    </Button>
                     <Button>
                         <FontAwesomeIcon icon={faGripVertical} />
                     </Button>

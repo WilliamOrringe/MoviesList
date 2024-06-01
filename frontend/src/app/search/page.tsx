@@ -61,21 +61,6 @@ const Page = async () => {
         })),
     ]
 
-    const sortOrder = [
-        {
-            value: 'trending',
-            label: 'Trending',
-        },
-        {
-            value: 'scores',
-            label: 'Scores',
-        },
-        {
-            value: 'alphabetical',
-            label: 'Alphabetical',
-        },
-    ]
-
     return (
         <div>
             <div className="flex flex-row gap-4">
