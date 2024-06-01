@@ -33,6 +33,15 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from '@/components/ui/dialog'
+import {
     Cloud,
     CreditCard,
     Github,
@@ -55,8 +64,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBell, faFilm } from '@fortawesome/free-solid-svg-icons'
 import { Button } from '../ui/button'
 import { MovieGenres } from '@/utils/movieGenres'
+import { useForm } from 'react-hook-form'
+import { Type as z, type Static } from '@sinclair/typebox'
+import { typeboxResolver } from '@hookform/resolvers/typebox'
+
+export const LoginFormValues = z.Object({
+    email: z.String({ minLength: 5, maxLength: 255, format: 'email' }),
+    password: z.String({ minLength: 8, maxLength: 255 }),
+})
 
 const Navbar = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({ resolver: typeboxResolver(LoginFormValues) })
+
+    const onSubmit = (data: any) => {
+        // Handle login logic here
+        console.log(data)
+    }
+
     const { user, error, isLoading } = useUser()
 
     if (isLoading) return <div>Loading...</div>
@@ -202,7 +230,11 @@ const Navbar = () => {
                                         <AvatarFallback>CN</AvatarFallback>
                                     </Avatar>
                                 </DropdownMenuTrigger>
-                                <DropdownMenuContent className="w-56">
+                                <DropdownMenuContent
+                                    className="w-56"
+                                    align="end"
+                                    forceMount
+                                >
                                     <DropdownMenuLabel>
                                         My Account
                                     </DropdownMenuLabel>
@@ -290,7 +322,9 @@ const Navbar = () => {
                                     <DropdownMenuSeparator />
                                     <DropdownMenuItem>
                                         <LogOut className="mr-2 h-4 w-4" />
-                                        <span>Log out</span>
+                                        <Link href="/api/auth/logout">
+                                            Log out
+                                        </Link>
                                         <DropdownMenuShortcut>
                                             ⇧⌘Q
                                         </DropdownMenuShortcut>
@@ -299,7 +333,7 @@ const Navbar = () => {
                             </DropdownMenu>
                         ) : (
                             <Button>
-                                <Link href="/login">Login</Link>
+                                <Link href="/api/auth/login">Login</Link>
                             </Button>
                         )}
                     </NavigationMenuItem>
