@@ -5,9 +5,10 @@ import { useUser } from '@auth0/nextjs-auth0/client'
 import { Button } from '../ui/button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
+    faArrowDownWideShort,
+    faArrowUpShortWide,
     faGripHorizontal,
     faGripVertical,
-    faSortAsc,
 } from '@fortawesome/free-solid-svg-icons'
 import {
     Pagination,
@@ -56,7 +57,9 @@ export const MoviesGrid = ({
 
     const { user, error, isLoading } = useUser()
     const [open, setOpen] = useState<boolean>(false)
-    const [value, setValue] = useState<string>('Trending')
+    const [value, setValue] = useState<string>('trending')
+
+    const [sortAsc, setSortAsc] = useState<boolean>(true)
 
     if (isLoading) return <div>Loading...</div>
     if (error) return <div>{error.message}</div>
@@ -94,7 +97,7 @@ export const MoviesGrid = ({
                                                 onSelect={(currentValue) => {
                                                     setValue(
                                                         currentValue === value
-                                                            ? 'Trending'
+                                                            ? 'trending'
                                                             : currentValue
                                                     )
                                                     setOpen(false)
@@ -117,8 +120,14 @@ export const MoviesGrid = ({
                             </Command>
                         </PopoverContent>
                     </Popover>
-                    <Button>
-                        <FontAwesomeIcon icon={faSortAsc} />
+                    <Button onClick={() => setSortAsc(!sortAsc)}>
+                        <FontAwesomeIcon
+                            icon={
+                                sortAsc
+                                    ? faArrowDownWideShort
+                                    : faArrowUpShortWide
+                            }
+                        />
                     </Button>
                     <Button>
                         <FontAwesomeIcon icon={faGripVertical} />
