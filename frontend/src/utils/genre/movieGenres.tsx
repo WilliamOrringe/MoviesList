@@ -22,7 +22,7 @@ import {
     faTheaterMasks,
     faUser,
 } from '@fortawesome/free-solid-svg-icons'
-import { Genre } from './genres.interface'
+import { Genre } from '../genres.interface'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const MovieGenres: Genre[] = [
