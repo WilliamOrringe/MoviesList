@@ -79,6 +79,7 @@ const Page = async () => {
     return (
         <div>
             <div className="flex flex-row gap-4">
+                <h1></h1>
                 <div className="flex flex-col gap-4 w-1/3 max-h-[300px] sticky top-10">
                     <h1 className="text-xl"> Search</h1>
                     <Input type="search"></Input>
