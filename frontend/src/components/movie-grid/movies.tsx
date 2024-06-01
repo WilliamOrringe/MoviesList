@@ -27,7 +27,7 @@ export const MoviesGrid = ({
     if (isLoading) return <div>Loading...</div>
     if (error) return <div>{error.message}</div>
     return (
-        <>
+        <div className="flex flex-col gap-4">
             <div className="flex flex-row justify-between">
                 <div>{movieList.length} items</div>
                 <div className="flex flex-row gap-2">
@@ -80,6 +80,6 @@ export const MoviesGrid = ({
                     </PaginationItem>
                 </PaginationContent>
             </Pagination>
-        </>
+        </div>
     )
 }

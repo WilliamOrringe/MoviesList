@@ -17,69 +17,48 @@ import { Button } from '../ui/button'
 import { Check, ChevronsUpDown } from 'lucide-react'
 import { cn } from '@/utils/cn'
 import { useState } from 'react'
+import {
+    MultiSelector,
+    MultiSelectorContent,
+    MultiSelectorInput,
+    MultiSelectorItem,
+    MultiSelectorList,
+    MultiSelectorTrigger,
+} from '@/components/ui/multi-select'
 
 const Filter = ({
     values,
+    heading,
     placeholder,
-    search,
 }: {
     values: { value: string; label: string }[]
+    heading: string
     placeholder: string
-    search: string
 }) => {
     const [open, setOpen] = useState<boolean>(false)
-    const [selected, setSelected] = useState<string>('')
+    const [selected, setSelected] = useState<string[]>([])
 
     return (
-        <Popover open={open} onOpenChange={setOpen}>
-            <PopoverTrigger asChild>
-                <Button
-                    variant="outline"
-                    role="combobox"
-                    aria-expanded={open}
-                    className="w-[200px] justify-between"
-                >
-                    {selected
-                        ? values.find((e) => e.value === selected)?.label
-                        : placeholder}
-                    <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-[200px] p-0">
-                <Command>
-                    <CommandInput placeholder={search} />
-                    <CommandEmpty>No framework found.</CommandEmpty>
-                    <CommandGroup>
-                        <CommandList>
-                            {values?.map((e) => (
-                                <CommandItem
-                                    key={e.value}
-                                    value={e.value}
-                                    onSelect={(currentValue) => {
-                                        setSelected(
-                                            currentValue === selected
-                                                ? ''
-                                                : currentValue
-                                        )
-                                        setOpen(false)
-                                    }}
-                                >
-                                    <Check
-                                        className={cn(
-                                            'mr-2 h-4 w-4',
-                                            selected === e.value
-                                                ? 'opacity-100'
-                                                : 'opacity-0'
-                                        )}
-                                    />
-                                    {e.label}
-                                </CommandItem>
-                            ))}
-                        </CommandList>
-                    </CommandGroup>
-                </Command>
-            </PopoverContent>
-        </Popover>
+        <div>
+            <div>{heading}</div>
+            <MultiSelector values={selected} onValuesChange={setSelected} loop>
+                <MultiSelectorTrigger>
+                    <MultiSelectorInput placeholder={placeholder} />
+                </MultiSelectorTrigger>
+                <MultiSelectorContent>
+                    <MultiSelectorList>
+                        {values.map((value, index) => (
+                            <MultiSelectorItem
+                                value={value.label}
+                                key={value.value}
+                            >
+                                {value.label}
+                            </MultiSelectorItem>
+                        ))}
+                    </MultiSelectorList>
+                </MultiSelectorContent>
+            </MultiSelector>
+        </div>
     )
 }
 

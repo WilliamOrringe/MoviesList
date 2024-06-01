@@ -8,6 +8,12 @@ import { MovieGenres } from '@/utils/movieGenres'
 import { Button } from '@/components/ui/button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilter } from '@fortawesome/free-solid-svg-icons'
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from '@/components/ui/accordion'
 
 const Page = async () => {
     const moviesList = await getMovies()
@@ -45,18 +51,14 @@ const Page = async () => {
 
     const currYear = new Date().getFullYear()
     const years: Filter[] = [
-        ...Array.from({ length: 30 }, (_, i) => {
-            return {
-                value: (currYear - i).toString(),
-                label: (currYear - i).toString(),
-            }
-        }),
-        ...Array.from({ length: 11 }, (_, i) => {
-            return {
-                value: (1900 - i * 10).toString() + 's',
-                label: (1900 - i * 10).toString() + 's',
-            }
-        }),
+        ...Array.from({ length: currYear - 2001 }, (_, i) => ({
+            value: (currYear - i).toString(),
+            label: (currYear - i).toString(),
+        })),
+        ...Array.from({ length: 8 }, (_, i) => ({
+            value: (1990 - i * 10).toString() + 's',
+            label: (1990 - i * 10).toString() + 's',
+        })),
     ]
 
     const sortOrder = [
@@ -76,36 +78,25 @@ const Page = async () => {
 
     return (
         <div>
-            <h1 className="text-4xl mb-10">Advanced Search</h1>
-            <div className="flex flex-col gap-4">
-                <div className="flex flex-row gap-4">
+            <div className="flex flex-row gap-4">
+                <div className="flex flex-col gap-4 w-1/3 max-h-[300px] sticky top-10">
+                    <h1 className="text-xl"> Search</h1>
+                    <Input type="search"></Input>
                     <Filter
                         values={MovieGenres}
+                        heading="Genre"
                         placeholder="Select genre"
-                        search="Searching genre"
                     />
                     <Filter
                         values={years}
+                        heading="Year"
                         placeholder="Select year"
-                        search="Searching year"
                     />
                     <Filter
                         values={status}
+                        heading="Status"
                         placeholder="Select status"
-                        search="Searching status"
                     />
-                    <Filter
-                        values={sortOrder}
-                        placeholder="Trending"
-                        search="Trending"
-                    />
-                    <Button>
-                        <FontAwesomeIcon
-                            icon={faFilter}
-                            className="mr-2 h-4 w-4"
-                        />{' '}
-                        Filter
-                    </Button>
                 </div>
                 <MoviesGrid movieList={moviesInfoList} />
             </div>
