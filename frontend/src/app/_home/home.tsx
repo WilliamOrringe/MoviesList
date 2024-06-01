@@ -55,7 +55,7 @@ const Home = async () => {
                             art Gippity AI wrapper today!
                         </h2>
                         <p className="mt-4 max-w-[26rem] text-left  text-base/6 text-neutral-200">
-                            With over 100,000 mothly active bot users, Gippity
+                            With over 100,000 monthly active bot users, Gippity
                             AI is the most popular AI platform for developers.
                         </p>
                     </div>

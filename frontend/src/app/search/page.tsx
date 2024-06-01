@@ -4,7 +4,7 @@ import getMovies from './_actions/actions'
 import { MoviesGrid } from '@/components/movie-grid/movies'
 import { Input } from '@/components/ui/input'
 import Filter from '@/components/filter/filter'
-import { MovieGenres } from '@/utils/movieGenres'
+import { MovieGenres } from '@/utils/genre/movieGenres'
 import { Button } from '@/components/ui/button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilter } from '@fortawesome/free-solid-svg-icons'
@@ -64,6 +64,7 @@ const Page = async () => {
     return (
         <div>
             <div className="flex flex-row gap-4">
+                <h1></h1>
                 <div className="flex flex-col gap-4 w-1/3 max-h-[300px] sticky top-10">
                     <h1 className="text-xl"> Search</h1>
                     <Input type="search"></Input>
