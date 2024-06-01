@@ -61,12 +61,18 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { useUser } from '@auth0/nextjs-auth0/client'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBell, faFilm } from '@fortawesome/free-solid-svg-icons'
+import {
+    faBell,
+    faFilm,
+    faTv,
+    faTvAlt,
+} from '@fortawesome/free-solid-svg-icons'
 import { Button } from '../ui/button'
 import { MovieGenres } from '@/utils/genre/movieGenres'
 import { useForm } from 'react-hook-form'
 import { Type as z, type Static } from '@sinclair/typebox'
 import { typeboxResolver } from '@hookform/resolvers/typebox'
+import { ShowGenres } from '@/utils/genre/showGenres'
 
 export const LoginFormValues = z.Object({
     email: z.String({ minLength: 5, maxLength: 255, format: 'email' }),
@@ -116,24 +122,22 @@ const Navbar = () => {
                                             href="/shows"
                                         >
                                             <FontAwesomeIcon
-                                                icon={faFilm}
+                                                icon={faTvAlt}
                                                 className="w-5 h-5"
                                             />
                                             <div className="mb-2 mt-4 text-lg font-medium">
                                                 Shows
                                             </div>
                                             <p className="text-sm leading-tight text-muted-foreground">
-                                                Beautifully designed components
-                                                that you can copy and paste into
-                                                your apps. Accessible.
-                                                Customizable. Open Source.
+                                                Go to the shows page to see the
+                                                latest shows and episodes.
                                             </p>
                                         </a>
                                     </NavigationMenuLink>
                                 </li>
                                 <li>
                                     <ul className="grid gap-3 p-4 md:grid-cols-2 w-full ">
-                                        {MovieGenres.map((genre) => (
+                                        {ShowGenres.map((genre) => (
                                             <Fragment key={genre.value}>
                                                 <ListItem
                                                     title={genre.label}

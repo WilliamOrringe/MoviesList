@@ -15,7 +15,11 @@ import {
     AccordionTrigger,
 } from '@/components/ui/accordion'
 
-const Page = async () => {
+const Page = async ({
+    searchParams: { genre, sort },
+}: {
+    searchParams: { genre: string; sort: string }
+}) => {
     const moviesList = await getMovies()
 
     const moviesInfoList = moviesList.results.map((movie: any) => {
@@ -63,8 +67,8 @@ const Page = async () => {
 
     return (
         <div>
+            <h1 className="text-4xl mb-10">GENRE {genre}</h1>
             <div className="flex flex-row gap-4">
-                <h1></h1>
                 <div className="flex flex-col gap-4 w-1/3 max-h-[300px] sticky top-10">
                     <h1 className="text-xl"> Search</h1>
                     <Input type="search"></Input>

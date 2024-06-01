@@ -7,7 +7,7 @@ import {
     CarouselItem,
 } from '@/components/ui/carousel'
 import { Card, CardContent } from '@/components/ui/card'
-import { ShowGenreTitles } from '@/components/navbar/genres'
+import { ShowGenres, ShowGenreTitles } from '@/utils/genre/showGenres'
 import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 
@@ -16,7 +16,7 @@ const ShowsHomePage = ({
     genre = 'all',
 }: {
     sort: string
-    genre: keyof typeof ShowGenreTitles
+    genre: keyof typeof ShowGenreTitles | 'all'
 }) => {
     const getShowsWithGenre = async () => {
         return await getShows('asdasdsa')
@@ -27,21 +27,22 @@ const ShowsHomePage = ({
         queryFn: getShowsWithGenre,
     })
 
-    const [showGenreTitle, setShowGenreTitle] =
-        useState<keyof typeof ShowGenreTitles>()
+    const [showGenreTitle, setShowGenreTitle] = useState<
+        keyof typeof ShowGenres & any
+    >()
     useEffect(() => {
         switch (genre) {
             case 'all':
                 setShowGenreTitle('all')
                 break
-            case 'Drama':
-                break
-            case 'Fantasy':
-                break
-            case 'Horror':
-                break
-            case 'Mystery':
-                break
+            // case 'Drama':
+            //     break
+            // case 'Fantasy':
+            //     break
+            // case 'Horror':
+            //     break
+            // case 'Mystery':
+            //     break
             case 'Sci-Fi':
                 break
             case 'Thriller':
@@ -62,7 +63,12 @@ const ShowsHomePage = ({
         })
     return (
         <div>
-            <h1 className="text-4xl mb-10">Shows</h1>
+            <h1 className="text-4xl mb-10">
+                {[genre[0].toUpperCase(), genre.slice(1).toLowerCase()].join(
+                    ''
+                )}
+                {/* {genre} */}
+            </h1>
             <Carousel className="w-full">
                 <CarouselContent>
                     {Array.from({ length: 5 }).map((_, index) => (
