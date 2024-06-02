@@ -40,7 +40,7 @@ const Filter = ({
 
     return (
         <div>
-            <div>{heading}</div>
+            <div className="text-xl">{heading}</div>
             <MultiSelector values={selected} onValuesChange={setSelected} loop>
                 <MultiSelectorTrigger>
                     <MultiSelectorInput placeholder={placeholder} />

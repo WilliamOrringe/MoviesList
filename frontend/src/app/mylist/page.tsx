@@ -1,6 +1,6 @@
 'use server'
 
-import { MoviesGrid } from '@/components/movie-grid/movies'
+import { MoviesGrid } from '@/components/movie-grid/movie-grid'
 import Schedule from '@/components/schedule/Schedule'
 import React from 'react'
 import getMovies from '../search/_actions/actions'
@@ -16,7 +16,7 @@ const Page = async () => {
     })
     return (
         <div className="flex flex-col gap-40 ">
-            <MoviesGrid movieList={moviesInfoList} />
+            <MoviesGrid title="MyList" movieList={moviesInfoList} />
             <Schedule />
         </div>
     )

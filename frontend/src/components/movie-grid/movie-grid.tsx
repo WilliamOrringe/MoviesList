@@ -36,8 +36,10 @@ import { Check, ChevronsUpDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export const MoviesGrid = ({
+    title,
     movieList,
 }: {
+    title: string
     movieList: { image: string; title: string }[]
 }) => {
     const sortOrders = [
@@ -66,6 +68,7 @@ export const MoviesGrid = ({
 
     return (
         <div className="flex flex-col gap-4">
+            <div className="flex items-center text-4xl mb-4">{title}</div>
             <div className="flex flex-row justify-between">
                 <div>{movieList.length} items</div>
                 <div className="flex flex-row gap-2">

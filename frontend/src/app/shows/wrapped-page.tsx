@@ -1,6 +1,6 @@
 'use client'
 import getShows from './_actions/actions'
-import { MoviesGrid } from '@/components/movie-grid/movies'
+import { MoviesGrid } from '@/components/movie-grid/movie-grid'
 import {
     Carousel,
     CarouselContent,
@@ -86,8 +86,7 @@ const ShowsHomePage = ({
                     ))}
                 </CarouselContent>
             </Carousel>
-            <h1 className="text-4xl mb-10">Trending now</h1>
-            <MoviesGrid movieList={moviesInfoList} />
+            <MoviesGrid title="Trending now" movieList={moviesInfoList} />
         </div>
     )
 }

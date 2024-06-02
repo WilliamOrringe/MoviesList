@@ -1,14 +1,17 @@
 'use server'
 
 import getMovies from './_actions/actions'
-import { MoviesGrid } from '@/components/movie-grid/movies'
+import { MoviesGrid } from '@/components/movie-grid/movie-grid'
 import {
     Carousel,
-    CarouselContent,
-    CarouselItem,
+    CarouselIndicator,
+    CarouselMainContainer,
     CarouselNext,
     CarouselPrevious,
-} from '@/components/ui/carousel'
+    CarouselThumbsContainer,
+    SliderMainItem,
+    SliderThumbItem,
+} from '@/components/ui/carousel-extended'
 import {
     Card,
     CardContent,
@@ -17,6 +20,7 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card'
+import { MoviesRow } from '@/components/movie-row/movie-row'
 
 const Page = async () => {
     const moviesList = await getMovies()
@@ -32,24 +36,31 @@ const Page = async () => {
         <div>
             <h1 className="text-4xl mb-10">Movies</h1>
             <Carousel className="w-full">
-                <CarouselContent>
-                    {Array.from({ length: 5 }).map((_, index) => (
-                        <CarouselItem key={index}>
-                            <div className="p-1">
-                                <Card>
-                                    <CardContent className="flex aspect-video items-center justify-center p-6">
-                                        <span className="text-4xl font-semibold">
-                                            {index + 1}
-                                        </span>
-                                    </CardContent>
-                                </Card>
-                            </div>
-                        </CarouselItem>
-                    ))}
-                </CarouselContent>
+                <div className="relative ">
+                    <CarouselMainContainer>
+                        {Array.from({ length: 5 }).map((_, index) => (
+                            <SliderMainItem
+                                key={index}
+                                className="flex aspect-video items-center justify-center p-6"
+                            >
+                                <div className="outline outline-1 outline-border size-full flex items-center justify-center rounded-xl bg-background">
+                                    Slide {index + 1}
+                                </div>
+                            </SliderMainItem>
+                        ))}
+                    </CarouselMainContainer>
+                    <div className="absolute bottom-2 left-1/2 -translate-x-1/2">
+                        <CarouselThumbsContainer className="gap-x-1">
+                            {Array.from({ length: 5 }).map((_, index) => (
+                                <CarouselIndicator key={index} index={index} />
+                            ))}
+                        </CarouselThumbsContainer>
+                    </div>
+                </div>
             </Carousel>
-            <h1 className="text-4xl mb-10">Trending now</h1>
-            <MoviesGrid movieList={moviesInfoList} />
+            <MoviesRow title="Trending Now" movieList={moviesInfoList} />
+            <MoviesRow title="Top 5 Today" movieList={moviesInfoList} />
+            <MoviesRow title="Popular on Netflix" movieList={moviesInfoList} />
         </div>
     )
 }
