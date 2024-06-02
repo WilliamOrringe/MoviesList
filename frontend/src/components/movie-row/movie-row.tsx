@@ -20,6 +20,7 @@ import {
     faGripVertical,
 } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
+import SkeletonLoader from '../ui/skeletonLoader'
 
 export const MoviesRow = ({
     title,
@@ -30,7 +31,21 @@ export const MoviesRow = ({
 }) => {
     const { user, error, isLoading } = useUser()
 
-    if (isLoading) return <div>Loading...</div>
+    if (isLoading)
+        return (
+            <div>
+                <div style={{ marginBottom: '10px' }}>
+                    <SkeletonLoader height={40} />
+                </div>
+                <div className="grid grid-cols-5 gap-x-5 gap-y-[10px] mb-5">
+                    {Array.from({ length: 5 }).map((_, index) => (
+                        <div key={index} className="w-full">
+                            <SkeletonLoader height={123} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        )
     if (error) return <div>{error.message}</div>
 
     return (

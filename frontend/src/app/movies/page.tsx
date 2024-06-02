@@ -21,6 +21,7 @@ import {
     CardTitle,
 } from '@/components/ui/card'
 import { MoviesRow } from '@/components/movie-row/movie-row'
+import { useUser } from '@auth0/nextjs-auth0/client'
 
 const Page = async () => {
     const moviesList = await getMovies()

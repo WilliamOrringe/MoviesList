@@ -55,6 +55,9 @@ const ShowsHomePage = ({
     if (movieQuery.isLoading)
         return (
             <div>
+                <div style={{ marginTop: '25px', marginBottom: '10px' }}>
+                    <SkeletonLoader height={660} />
+                </div>
                 <div style={{ marginBottom: '10px' }}>
                     <SkeletonLoader height={40} />
                 </div>
