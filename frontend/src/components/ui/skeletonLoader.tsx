@@ -9,7 +9,7 @@ interface SkeletonLoaderProps {
 
 const SkeletonLoader: React.FC<SkeletonLoaderProps> = ({ height, width }) => {
     return (
-        <div className="skeleton-background">
+        <div>
             <SkeletonTheme
                 baseColor="hsl(var(--skbackground))"
                 highlightColor="hsl(var(--background))"
