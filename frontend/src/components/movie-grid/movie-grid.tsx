@@ -34,6 +34,7 @@ import {
 } from '@/components/ui/popover'
 import { Check, ChevronsUpDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import SkeletonLoader from '../ui/skeletonLoader'
 
 export const MoviesGrid = ({
     title,
@@ -63,7 +64,21 @@ export const MoviesGrid = ({
 
     const [sortAsc, setSortAsc] = useState<boolean>(true)
 
-    if (isLoading) return <div>Loading...</div>
+    if (isLoading)
+        return (
+            <div>
+                <div style={{ marginBottom: '10px' }}>
+                    <SkeletonLoader height={40} />
+                </div>
+                <div className="grid grid-cols-4 gap-x-4 gap-y-[10px]">
+                    {Array.from({ length: 8 }).map((_, index) => (
+                        <div key={index} className="w-full">
+                            <SkeletonLoader height={400} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        )
     if (error) return <div>{error.message}</div>
 
     return (

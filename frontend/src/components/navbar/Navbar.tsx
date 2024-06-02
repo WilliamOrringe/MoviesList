@@ -73,6 +73,7 @@ import { useForm } from 'react-hook-form'
 import { Type as z, type Static } from '@sinclair/typebox'
 import { typeboxResolver } from '@hookform/resolvers/typebox'
 import { ShowGenres } from '@/utils/genre/showGenres'
+import SkeletonLoader from '../ui/skeletonLoader'
 
 export const LoginFormValues = z.Object({
     email: z.String({ minLength: 5, maxLength: 255, format: 'email' }),
@@ -93,7 +94,12 @@ const Navbar = () => {
 
     const { user, error, isLoading } = useUser()
 
-    if (isLoading) return <div>Loading...</div>
+    if (isLoading)
+        return (
+            <div>
+                <SkeletonLoader height={50} />
+            </div>
+        )
     if (error) return <div>{error.message}</div>
 
     return (
