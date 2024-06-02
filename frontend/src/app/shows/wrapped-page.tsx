@@ -10,7 +10,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { ShowGenres, ShowGenreTitles } from '@/utils/genre/showGenres'
 import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import SkeletonLoader from '@/components/ui/skeletonLoader'
+import SkeletonLoader from '@/components/ui/skeleton-loader'
 
 const ShowsHomePage = ({
     sort = 'trending',

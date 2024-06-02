@@ -34,7 +34,7 @@ import {
 } from '@/components/ui/popover'
 import { Check, ChevronsUpDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import SkeletonLoader from '../ui/skeletonLoader'
+import SkeletonLoader from '../ui/skeleton-loader'
 
 export const MoviesGrid = ({
     title,

@@ -73,7 +73,7 @@ import { useForm } from 'react-hook-form'
 import { Type as z, type Static } from '@sinclair/typebox'
 import { typeboxResolver } from '@hookform/resolvers/typebox'
 import { ShowGenres } from '@/utils/genre/showGenres'
-import SkeletonLoader from '../ui/skeletonLoader'
+import SkeletonLoader from '../ui/skeleton-loader'
 
 export const LoginFormValues = z.Object({
     email: z.String({ minLength: 5, maxLength: 255, format: 'email' }),
