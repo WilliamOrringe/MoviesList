@@ -20,7 +20,7 @@ import {
     faGripVertical,
 } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
-import SkeletonLoader from '../ui/skeletonLoader'
+import SkeletonLoader from '../ui/skeleton-loader'
 
 export const MoviesRow = ({
     title,
