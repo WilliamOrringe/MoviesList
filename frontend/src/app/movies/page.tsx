@@ -1,7 +1,6 @@
 'use server'
 
 import getMovies from './_actions/actions'
-import { MoviesGrid } from '@/components/movie-grid/movie-grid'
 import {
     Carousel,
     CarouselIndicator,
@@ -12,16 +11,7 @@ import {
     SliderMainItem,
     SliderThumbItem,
 } from '@/components/ui/carousel-extended'
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from '@/components/ui/card'
 import { MoviesRow } from '@/components/movie-row/movie-row'
-import { useUser } from '@auth0/nextjs-auth0/client'
 
 const Page = async () => {
     const moviesList = await getMovies()

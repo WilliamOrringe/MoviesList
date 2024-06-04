@@ -41,7 +41,7 @@ export const MoviesRow = ({
                     <SkeletonLoader height={40} />
                 </div>
                 <div className="grid grid-cols-5 gap-x-5 gap-y-[10px] mb-5">
-                    {Array.from({ length: 10 }).map((_, index) => (
+                    {Array.from({ length: 5 }).map((_, index) => (
                         <div key={index} className="w-full">
                             <SkeletonLoader height={123} />
                         </div>
