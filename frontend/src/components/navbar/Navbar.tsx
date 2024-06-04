@@ -33,39 +33,25 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from '@/components/ui/dialog'
-import {
-    Cloud,
-    CreditCard,
-    Github,
-    Keyboard,
-    LifeBuoy,
-    LogOut,
-    Mail,
-    MessageSquare,
-    Plus,
-    PlusCircle,
-    Settings,
-    User,
-    UserPlus,
-    Users,
-} from 'lucide-react'
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from '@/components/ui/card'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { useUser } from '@auth0/nextjs-auth0/client'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faBell,
-    faFilm,
-    faTv,
-    faTvAlt,
+    faBookmark,
+    faGear,
+    faMoon,
+    faRightFromBracket,
+    faSun,
+    faUser,
 } from '@fortawesome/free-solid-svg-icons'
 import { Button } from '../ui/button'
 import { MovieGenres } from '@/utils/genre/movieGenres'
@@ -74,6 +60,8 @@ import { Type as z, type Static } from '@sinclair/typebox'
 import { typeboxResolver } from '@hookform/resolvers/typebox'
 import { ShowGenres } from '@/utils/genre/showGenres'
 import SkeletonLoader from '../ui/skeleton-loader'
+import { Switch } from '@/components/ui/switch'
+import { Separator } from '../ui/separator'
 
 export const LoginFormValues = z.Object({
     email: z.String({ minLength: 5, maxLength: 255, format: 'email' }),
@@ -86,6 +74,22 @@ const Navbar = () => {
         handleSubmit,
         formState: { errors },
     } = useForm({ resolver: typeboxResolver(LoginFormValues) })
+
+    //TODO: get this from API
+    const notifications = [
+        {
+            title: 'Your call has been confirmed.',
+            description: '1 hour ago',
+        },
+        {
+            title: 'You have a new message!',
+            description: '1 hour ago',
+        },
+        {
+            title: 'Your subscription is expiring soon!',
+            description: '2 hours ago',
+        },
+    ]
 
     const onSubmit = (data: any) => {
         // Handle login logic here
@@ -103,7 +107,7 @@ const Navbar = () => {
     if (error) return <div>{error.message}</div>
 
     return (
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between my-4">
             <NavigationMenu>
                 <NavigationMenuList>
                     <NavigationMenuItem>
@@ -146,127 +150,166 @@ const Navbar = () => {
             </NavigationMenu>
             <NavigationMenu>
                 <NavigationMenuList>
+                    {user && (
+                        <NavigationMenuItem>
+                            <NavigationMenuTrigger isArrow={false}>
+                                <FontAwesomeIcon icon={faBell} />
+                            </NavigationMenuTrigger>
+                            <NavigationMenuContent>
+                                <Card className={cn('w-[300px]')}>
+                                    <CardHeader>
+                                        <CardTitle>Notifications</CardTitle>
+                                        <CardDescription>
+                                            You have 3 unread messages.
+                                        </CardDescription>
+                                    </CardHeader>
+                                    <CardContent className="grid gap-4">
+                                        <div className=" flex items-center space-x-4 rounded-md border p-4">
+                                            <FontAwesomeIcon icon={faBell} />
+                                            <div className="flex-1 space-y-1">
+                                                <p className="text-sm font-medium leading-none">
+                                                    Push Notifications
+                                                </p>
+                                                <p className="text-sm text-muted-foreground">
+                                                    Send notifications to
+                                                    device.
+                                                </p>
+                                            </div>
+                                            <Switch />
+                                        </div>
+                                        <div>
+                                            {notifications.map(
+                                                (notification, index) => (
+                                                    <div
+                                                        key={index}
+                                                        className="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0"
+                                                    >
+                                                        <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
+                                                        <div className="space-y-1">
+                                                            <p className="text-sm font-medium leading-none">
+                                                                {
+                                                                    notification.title
+                                                                }
+                                                            </p>
+                                                            <p className="text-sm text-muted-foreground">
+                                                                {
+                                                                    notification.description
+                                                                }
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            )}
+                                        </div>
+                                    </CardContent>
+                                    <CardFooter>
+                                        <Button className="w-full">
+                                            <FontAwesomeIcon
+                                                icon={faBell}
+                                                className="mr-2 h-4 w-4"
+                                            />
+                                            Mark all as read
+                                        </Button>
+                                    </CardFooter>
+                                </Card>
+                            </NavigationMenuContent>
+                        </NavigationMenuItem>
+                    )}
                     <NavigationMenuItem>
-                        <ThemeSwitcher />
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <Button variant="ghost">
-                            <FontAwesomeIcon icon={faBell} />
-                        </Button>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem className="hover:cursor-pointer">
                         {user ? (
-                            <DropdownMenu>
-                                <DropdownMenuTrigger asChild>
+                            <>
+                                <NavigationMenuTrigger
+                                    isArrow={false}
+                                    className={cn(
+                                        'hover:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent'
+                                    )}
+                                >
                                     <Avatar>
                                         <AvatarImage
                                             src={user?.picture ?? ''}
                                             alt="user profile picture"
                                         />
-                                        <AvatarFallback>CN</AvatarFallback>
+                                        <AvatarFallback>
+                                            <FontAwesomeIcon icon={faUser} />
+                                        </AvatarFallback>
                                     </Avatar>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent
-                                    className="w-56"
-                                    align="end"
-                                    forceMount
-                                >
-                                    <DropdownMenuLabel>
-                                        My Account
-                                    </DropdownMenuLabel>
-                                    <DropdownMenuSeparator />
-                                    <DropdownMenuGroup>
-                                        <DropdownMenuItem>
-                                            <User className="mr-2 h-4 w-4" />
-                                            <span>Profile</span>
-                                            <DropdownMenuShortcut>
-                                                ⇧⌘P
-                                            </DropdownMenuShortcut>
-                                        </DropdownMenuItem>
-                                        <DropdownMenuItem>
-                                            <CreditCard className="mr-2 h-4 w-4" />
-                                            <span>Billing</span>
-                                            <DropdownMenuShortcut>
-                                                ⌘B
-                                            </DropdownMenuShortcut>
-                                        </DropdownMenuItem>
-                                        <DropdownMenuItem>
-                                            <Settings className="mr-2 h-4 w-4" />
-                                            <span>Settings</span>
-                                            <DropdownMenuShortcut>
-                                                ⌘S
-                                            </DropdownMenuShortcut>
-                                        </DropdownMenuItem>
-                                        <DropdownMenuItem>
-                                            <Keyboard className="mr-2 h-4 w-4" />
-                                            <span>Keyboard shortcuts</span>
-                                            <DropdownMenuShortcut>
-                                                ⌘K
-                                            </DropdownMenuShortcut>
-                                        </DropdownMenuItem>
-                                    </DropdownMenuGroup>
-                                    <DropdownMenuSeparator />
-                                    <DropdownMenuGroup>
-                                        <DropdownMenuItem>
-                                            <Users className="mr-2 h-4 w-4" />
-                                            <span>Team</span>
-                                        </DropdownMenuItem>
-                                        <DropdownMenuSub>
-                                            <DropdownMenuSubTrigger>
-                                                <UserPlus className="mr-2 h-4 w-4" />
-                                                <span>Invite users</span>
-                                            </DropdownMenuSubTrigger>
-                                            <DropdownMenuPortal>
-                                                <DropdownMenuSubContent>
-                                                    <DropdownMenuItem>
-                                                        <Mail className="mr-2 h-4 w-4" />
-                                                        <span>Email</span>
-                                                    </DropdownMenuItem>
-                                                    <DropdownMenuItem>
-                                                        <MessageSquare className="mr-2 h-4 w-4" />
-                                                        <span>Message</span>
-                                                    </DropdownMenuItem>
-                                                    <DropdownMenuSeparator />
-                                                    <DropdownMenuItem>
-                                                        <PlusCircle className="mr-2 h-4 w-4" />
-                                                        <span>More...</span>
-                                                    </DropdownMenuItem>
-                                                </DropdownMenuSubContent>
-                                            </DropdownMenuPortal>
-                                        </DropdownMenuSub>
-                                        <DropdownMenuItem>
-                                            <Plus className="mr-2 h-4 w-4" />
-                                            <span>New Team</span>
-                                            <DropdownMenuShortcut>
-                                                ⌘+T
-                                            </DropdownMenuShortcut>
-                                        </DropdownMenuItem>
-                                    </DropdownMenuGroup>
-                                    <DropdownMenuSeparator />
-                                    <DropdownMenuItem>
-                                        <Github className="mr-2 h-4 w-4" />
-                                        <span>GitHub</span>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem>
-                                        <LifeBuoy className="mr-2 h-4 w-4" />
-                                        <span>Support</span>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem disabled>
-                                        <Cloud className="mr-2 h-4 w-4" />
-                                        <span>API</span>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuSeparator />
-                                    <DropdownMenuItem>
-                                        <LogOut className="mr-2 h-4 w-4" />
-                                        <Link href="/api/auth/logout">
-                                            Log out
-                                        </Link>
-                                        <DropdownMenuShortcut>
-                                            ⇧⌘Q
-                                        </DropdownMenuShortcut>
-                                    </DropdownMenuItem>
-                                </DropdownMenuContent>
-                            </DropdownMenu>
+                                </NavigationMenuTrigger>
+                                <NavigationMenuContent>
+                                    <Card className={cn('w-[300px]')}>
+                                        <CardHeader>
+                                            <CardTitle>Account</CardTitle>
+                                        </CardHeader>
+                                        <CardContent className="grid gap-2">
+                                            <div className="flex flex-row items-center justify-left">
+                                                <Button variant="link">
+                                                    <FontAwesomeIcon
+                                                        icon={faUser}
+                                                        className="mr-2 h-4 w-4"
+                                                    />
+                                                    Profile
+                                                </Button>
+                                            </div>
+                                            <div className="flex flex-row items-center justify-left">
+                                                <Button variant="link">
+                                                    <FontAwesomeIcon
+                                                        icon={faBookmark}
+                                                        className="mr-2 h-4 w-4"
+                                                    />
+                                                    MyList
+                                                </Button>
+                                            </div>
+                                            <div className="flex flex-row items-center justify-left">
+                                                <Button variant="link">
+                                                    <FontAwesomeIcon
+                                                        icon={faBell}
+                                                        className="mr-2 h-4 w-4"
+                                                    />
+                                                    Notifications
+                                                </Button>
+                                            </div>
+                                            <div className="flex flex-row items-center justify-left">
+                                                <Button variant="link">
+                                                    <FontAwesomeIcon
+                                                        icon={faGear}
+                                                        className="mr-2 h-4 w-4"
+                                                    />
+                                                    Settings
+                                                </Button>
+                                            </div>
+                                            <Separator />
+                                            <div>
+                                                <div className="flex flex-row items-center justify-between">
+                                                    <Button
+                                                        variant="link"
+                                                        className="pointer-events-none"
+                                                    >
+                                                        <FontAwesomeIcon
+                                                            icon={faMoon}
+                                                            className="mr-2 h-4 w-4"
+                                                        />
+                                                        Dark Mode
+                                                    </Button>
+                                                    <ThemeSwitcher />
+                                                </div>
+                                            </div>
+                                            <Separator />
+                                            <div className="flex flex-row items-center justify-left">
+                                                <Link href="/api/auth/logout">
+                                                    <Button variant="link">
+                                                        <FontAwesomeIcon
+                                                            icon={
+                                                                faRightFromBracket
+                                                            }
+                                                            className="mr-2 h-4 w-4"
+                                                        />
+                                                        Log out
+                                                    </Button>
+                                                </Link>
+                                            </div>
+                                        </CardContent>
+                                    </Card>
+                                </NavigationMenuContent>
+                            </>
                         ) : (
                             <Button>
                                 <Link href="/api/auth/login">Login</Link>

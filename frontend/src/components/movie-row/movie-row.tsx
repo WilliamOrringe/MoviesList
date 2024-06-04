@@ -7,11 +7,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Card, CardContent } from '@/components/ui/card'
 import {
     Carousel,
-    CarouselContent,
-    CarouselItem,
+    CarouselMainContainer,
     CarouselNext,
     CarouselPrevious,
-} from '@/components/ui/carousel'
+    SliderMainItem,
+    CarouselThumbsContainer,
+    SliderThumbItem,
+} from '@/components/ui/carousel-extended'
+
 import { Check, ChevronsUpDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import {
@@ -38,7 +41,7 @@ export const MoviesRow = ({
                     <SkeletonLoader height={40} />
                 </div>
                 <div className="grid grid-cols-5 gap-x-5 gap-y-[10px] mb-5">
-                    {Array.from({ length: 5 }).map((_, index) => (
+                    {Array.from({ length: 10 }).map((_, index) => (
                         <div key={index} className="w-full">
                             <SkeletonLoader height={123} />
                         </div>
@@ -63,9 +66,9 @@ export const MoviesRow = ({
                 </div>
             </div>
             <Carousel className="w-full">
-                <CarouselContent className="-ml-1">
-                    {Array.from({ length: 5 }).map((_, index) => (
-                        <CarouselItem
+                <CarouselMainContainer className="h-full">
+                    {Array.from({ length: 10 }).map((_, index) => (
+                        <SliderMainItem
                             key={index}
                             className="pl-1 md:basis-1/3 lg:basis-1/5"
                         >
@@ -78,9 +81,9 @@ export const MoviesRow = ({
                                     </CardContent>
                                 </Card>
                             </div>
-                        </CarouselItem>
+                        </SliderMainItem>
                     ))}
-                </CarouselContent>
+                </CarouselMainContainer>
             </Carousel>
         </div>
     )

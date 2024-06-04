@@ -1,12 +1,13 @@
+'use server'
 export default async function getMovies() {
-     const apiKey = process.env.MOVIES_KEY;
-    const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`;
-    const response = await fetch(url);
+    const apiKey = process.env.MOVIES_KEY
+    const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
+    const response = await fetch(url)
 
     if (!response.ok) {
-        return {results:[]}
+        return { results: [] }
     }
 
-    const data = await response.json();
-    return data;
+    const data = await response.json()
+    return data
 }
