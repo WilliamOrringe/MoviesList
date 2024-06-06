@@ -1,6 +1,6 @@
 import './globals.css'
 import Footer from '@/components/ui/Footer'
-import Navbar from '@/components/navbar/Navbar'
+import Navbar from '@/components/navbar/navbar'
 
 import { UserProvider } from '@auth0/nextjs-auth0/client'
 
