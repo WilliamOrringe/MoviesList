@@ -12,9 +12,11 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             className="dark dark:bg-backgroundDark dark:text-textDark dark:accent-accentDark bg-backgroundLight text-textDark accent-accentLight m-2.5"
         >
             <UserProvider>
-                <body className="flex flex-col space-y-4 max-w-screen-xl mx-auto justify-center">
+                <body className="flex flex-col max-w-screen-xl mx-auto">
                     <Navbar />
-                    <main className="">{children}</main>
+                    <main className="justify-center flex flex-1 flex-col w-full">
+                        {children}
+                    </main>
                     <Footer />
                 </body>
             </UserProvider>

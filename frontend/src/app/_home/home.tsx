@@ -2,7 +2,6 @@
 
 import Landing from '@/components/landing/Landing'
 import getMovies from '@/components/movie-grid/_actions/actions'
-import Image from 'next/image'
 import { WobbleCard } from '@/components/ui/wobble-card'
 
 const Home = async () => {

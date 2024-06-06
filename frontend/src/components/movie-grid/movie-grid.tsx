@@ -87,57 +87,17 @@ export const MoviesGrid = ({
             <div className="flex flex-row justify-between">
                 <div>{movieList.length} items</div>
                 <div className="flex flex-row gap-2">
-                    <Popover open={open} onOpenChange={setOpen}>
-                        <PopoverTrigger asChild>
-                            <Button
-                                variant="outline"
-                                role="combobox"
-                                aria-expanded={open}
-                                className="w-[200px] justify-between"
-                            >
-                                {value
-                                    ? sortOrders.find(
-                                          (sortOrder) =>
-                                              sortOrder.value === value
-                                      )?.label
-                                    : 'Select Sort Order'}
-                                <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                            </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-[200px] p-0">
-                            <Command>
-                                <CommandGroup>
-                                    <CommandList>
-                                        {sortOrders.map((sortOrder) => (
-                                            <CommandItem
-                                                key={sortOrder.value}
-                                                value={sortOrder.value}
-                                                onSelect={(currentValue) => {
-                                                    setValue(
-                                                        currentValue === value
-                                                            ? 'trending'
-                                                            : currentValue
-                                                    )
-                                                    setOpen(false)
-                                                }}
-                                            >
-                                                <Check
-                                                    className={cn(
-                                                        'mr-2 h-4 w-4',
-                                                        value ===
-                                                            sortOrder.value
-                                                            ? 'opacity-100'
-                                                            : 'opacity-0'
-                                                    )}
-                                                />
-                                                {sortOrder.label}
-                                            </CommandItem>
-                                        ))}
-                                    </CommandList>
-                                </CommandGroup>
-                            </Command>
-                        </PopoverContent>
-                    </Popover>
+                    <select className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1">
+                        <option className="relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                            asdasdas
+                        </option>
+                        <option className="relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                            asdasdas
+                        </option>
+                        <option className="relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+                            asdasdas
+                        </option>
+                    </select>
                     <Button onClick={() => setSortAsc(!sortAsc)}>
                         <FontAwesomeIcon
                             icon={

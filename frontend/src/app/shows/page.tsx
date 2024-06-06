@@ -5,7 +5,7 @@ import {
     QueryClientProvider,
 } from '@tanstack/react-query'
 import ShowsHomePage from './wrapped-page'
-import { ShowGenreTitles } from '@/components/navbar/genres'
+import { ShowGenreTitles } from '@/utils/genre/showGenres'
 
 const ShowsPage = ({
     searchParams: { genre, sort },
