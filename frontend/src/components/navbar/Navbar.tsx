@@ -19,20 +19,6 @@ import {
     navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuGroup,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuPortal,
-    DropdownMenuSeparator,
-    DropdownMenuShortcut,
-    DropdownMenuSub,
-    DropdownMenuSubContent,
-    DropdownMenuSubTrigger,
-    DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import {
     Card,
     CardContent,
     CardDescription,
@@ -54,11 +40,9 @@ import {
     faUser,
 } from '@fortawesome/free-solid-svg-icons'
 import { Button } from '../ui/button'
-import { MovieGenres } from '@/utils/genre/movieGenres'
 import { useForm } from 'react-hook-form'
-import { Type as z, type Static } from '@sinclair/typebox'
+import { Type as z } from '@sinclair/typebox'
 import { typeboxResolver } from '@hookform/resolvers/typebox'
-import { ShowGenres } from '@/utils/genre/showGenres'
 import SkeletonLoader from '../ui/skeleton-loader'
 import { Switch } from '@/components/ui/switch'
 import { Separator } from '../ui/separator'
